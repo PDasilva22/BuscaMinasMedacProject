@@ -4,6 +4,16 @@
  */
 package Vista;
 
+import Controlador.ConexionMySQL;
+import Controlador.ControladorJugadores;
+import Modelo.Jugador;
+import java.awt.Color;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Pato
@@ -13,8 +23,45 @@ public class PuntuacionGUI extends javax.swing.JFrame {
     /**
      * Creates new form PuntuacionGUI
      */
+    private ConexionMySQL conexion;
+    private ControladorJugadores controlador;
+
     public PuntuacionGUI() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        conexion = new ConexionMySQL("root", " ", "buscaminas");
+        controlador = new ControladorJugadores(conexion);
+        
+       
+
+        //mostrar
+        try {
+
+             this.conexion.conectar();
+            ArrayList<Jugador> lista = controlador.ObtenerTodasPersonas();
+           
+          
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            //model.setRowCount(0);
+           
+            int fila = 0, columna = 0;
+            if (!lista.isEmpty()) {
+                for (Jugador jugador : lista) {
+                    model.setRowCount(model.getRowCount()+1);
+                    model.setValueAt(jugador.getNombre(), fila, columna);
+                    model.setValueAt(jugador.getPuntuacion(), fila, columna + 1);
+                    model.setValueAt(jugador.getFecha(),fila,columna+2);
+                    fila++;
+                    columna = 0;
+                }
+
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(PuntuacionGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -26,17 +73,39 @@ public class PuntuacionGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Jugador", "Puntuacion", "Fecha"
+            }
+        ));
+        jTable1.setMaximumSize(new java.awt.Dimension(200, 80));
+        jTable1.setPreferredSize(new java.awt.Dimension(200, 80));
+        jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(141, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(107, 107, 107))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(245, Short.MAX_VALUE))
         );
 
         pack();
@@ -78,5 +147,7 @@ public class PuntuacionGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

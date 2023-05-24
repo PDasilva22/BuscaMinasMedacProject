@@ -4,11 +4,15 @@
  */
 package Vista;
 
+import Implementacion.confTablero;
 import Modelo.Jugador;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -23,6 +27,8 @@ public class TableroGUI extends javax.swing.JFrame {
      */
     //El jugador que recibiremos de InicioGUI.java creado con el nombre insertado por el jugador.
     private Jugador jActual;
+    private ArrayList<JButton> listaBotones = new ArrayList<JButton>();
+    private ArrayList<Integer> tablero = new confTablero().obtenerTablero();
 
     public TableroGUI() {
         initComponents();
@@ -79,26 +85,38 @@ public class TableroGUI extends javax.swing.JFrame {
         JPanel panel = new JPanel(); // Assuming 8x8 grid for buttons
         panel.setBackground(Color.red);
         int buttonSize = 50;
-        panel.setSize(buttonSize*8,buttonSize*8);
-        
-        //centramos horizontalmente el panel
-        panel.setLocation((this.getWidth()-panel.getWidth())/2,(this.getHeight()-panel.getHeight())/2);
-        panel.setLayout(new GridLayout(8,8));
-            
+        panel.setSize(buttonSize * 8, buttonSize * 8);
+
+        //centramos el panel
+        panel.setLocation((this.getWidth() - panel.getWidth()) / 2, (this.getHeight() - panel.getHeight()) / 2);
+        //un grid layout de 8x8 porque son 64 opciones
+        panel.setLayout(new GridLayout(8, 8));
+
         this.add(panel);
 
         for (int i = 0; i < 64; i++) {
-            JButton button = new JButton("0");
-          
-           // button.setPreferredSize(new Dimension(5,5));
-           //button.setSize(5,5);
-           button.setSize(buttonSize, buttonSize);
+            JButton button = new JButton("");
+            button.setName("casilla" + i);
+            button.setSize(buttonSize, buttonSize);
             panel.add(button);
-            System.out.println(button.getSize().height +" "+ button.getSize().width );
+            //añadimos los eventos de los botones
+            //hay  que hacerla final para poder usarla dentro de un evento
+            final int index = i;
+            button.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    //cuando se pulsa cualquier boton ocurre esto
+
+                    listaBotones.get(index).setText(tablero.get(index).toString());
+
+                }
+            });
+            //añadimos los botones a la lista para manipularlos mas tarde
+            listaBotones.add(button);
+
         }
-        
-   
-       
+
     }
 
     public static void main(String args[]) {

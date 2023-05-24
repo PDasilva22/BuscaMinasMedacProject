@@ -17,7 +17,7 @@ import java.util.TimeZone;
  * @author usuario
  */
 public class ConexionMySQL {
-       private String BD;
+    private String BD;
     private String usuario;
     private String pass;
     private Connection connection;

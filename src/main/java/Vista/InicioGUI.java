@@ -64,6 +64,7 @@ public class InicioGUI extends javax.swing.JFrame {
         jTF_NombreJugador = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(700, 500));
         setPreferredSize(new java.awt.Dimension(700, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -91,6 +92,7 @@ public class InicioGUI extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         jActual = new Jugador(this.jTF_NombreJugador.getText());
+        
         
 
         //pasamos el jugador a la nueva ventana
