@@ -16,24 +16,23 @@ import java.util.Date;
  */
 public class ControladorJugadores {
     
-        private ConexionMySQL conexion=new ConexionMySQL("root","","buscaminas");
+        private ConexionMySQL conexion;
 
     public ControladorJugadores(ConexionMySQL conexion) {
         this.conexion = conexion;
     }
         
-            public ArrayList<Jugador> ObtenerTodasPersonas() throws SQLException { // Va a devolver un ArrayList de Artículos
+            public ArrayList<Jugador> ObtenerTodasPersonas() throws SQLException { // Va a devolver un ArrayList de Jugadores
         ArrayList<Jugador> lista = new ArrayList<>();
         String consulta = "SELECT * FROM jugadores";
         ResultSet rset = conexion.ejecutarSelect(consulta);
         while (rset.next()) {
             String nombre = rset.getString("Nombre");
             int puntuacion = rset.getInt("Puntuacion");
-            Date fecha = rset.getDate("Fecha");
+            String fecha = rset.getString("Fecha");
             Jugador p = new Jugador(nombre);
             lista.add(p);
         }
-                System.out.println(lista.toString());
         return lista;
     }
 }

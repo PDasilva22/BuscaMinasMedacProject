@@ -4,20 +4,46 @@
  */
 package Vista;
 
+import Controlador.ConexionMySQL;
+import Controlador.ControladorJugadores;
+import Modelo.Jugador;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Pato
  */
 public class InicioGUI extends javax.swing.JFrame {
-
+    
+    private ConexionMySQL conexion;
+    private ControladorJugadores controlador;
+    private ArrayList <Jugador> jugadores;
     /**
      * Creates new form InicioGUI
      */
-    public InicioGUI() {
+    public InicioGUI()  {
         initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setSize(450, 500);
+
+         conexion=new ConexionMySQL("root"," ","buscaminas");
+           controlador=new ControladorJugadores(conexion);
+        try {
+            conexion.conectar();
+            jugadores=controlador.ObtenerTodasPersonas();
+            for(Jugador i:jugadores){
+                System.out.println(i.toString());
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(InicioGUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(InicioGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         
     }
 
