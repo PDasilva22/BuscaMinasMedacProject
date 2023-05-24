@@ -11,19 +11,18 @@ import javax.swing.JFrame;
  *
  * @author MEDAC
  */
-
 public class Main extends JFrame {
 
-  
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        int bi[][] = new int[10][10];
-        int a = (int)(Math.random()*10);
-        int b =(int)(Math.random()*10);
+        int bi[][] = new int[8][8];
+        int a = (int) (Math.random() * 8);
+        int b = (int) (Math.random() * 8);
         int aux_a = a, aux_b = b;
-        bi[a][b] = 9;
+        bi[a][b] = 0;
+
         
 
         for (int i = 0; i < bi.length; i++) {
@@ -35,16 +34,28 @@ public class Main extends JFrame {
                 }
 
                 if (comprobarB(b, j)) {
-                    if(bi[i][j]<b-j){
-                        bi[i][j] = b-j;
+                    if (bi[i][j] < b - j) {
+                        bi[i][j] = b - j;
                     }
                 } else if (comprobarJ(b, j)) {
-                    if(bi[i][j]<j-b){
-                        bi[i][j] = j-b;
+                    if (bi[i][j] < j - b) {
+                        bi[i][j] = j - b;
                     }
                 }
             }
         }
+        //Se crea una bomba contemplando que no se posicione en el mismo numero que el jugador o ¡una bomba
+        int contador = 3; //Este contador seria segun el nivel de dificultad
+        for (int i = 0; i < contador; i++) {
+            int aBomba;
+            int bBomba;
+            do {
+                aBomba = (int) (Math.random() * 8);
+                bBomba = (int) (Math.random() * 8);
+            } while (a == aBomba && b == bBomba || bi[aBomba][bBomba]==9);
+             bi[aBomba][bBomba] = 9;
+        }
+       
 
         for (int i = 0; i < bi.length; i++) {
             for (int j = 0; j < bi[i].length; j++) {
