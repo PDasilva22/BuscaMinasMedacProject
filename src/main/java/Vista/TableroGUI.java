@@ -15,6 +15,9 @@ public class TableroGUI extends javax.swing.JFrame {
      */
     public TableroGUI() {
         initComponents();
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
+        this.setSize(600, 700);
     }
 
     /**
