@@ -4,6 +4,14 @@
  */
 package Vista;
 
+import Modelo.Jugador;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Pato
@@ -13,11 +21,25 @@ public class TableroGUI extends javax.swing.JFrame {
     /**
      * Creates new form TableroGUI
      */
+    //El jugador que recibiremos de InicioGUI.java creado con el nombre insertado por el jugador.
+    private Jugador jActual;
+
     public TableroGUI() {
         initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
-        this.setSize(600, 700);
+        generarTablero();
+
+        // this.setSize(600, 700);
+    }
+
+    public TableroGUI(Jugador jActual) {
+        initComponents();
+        this.jActual = jActual;
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
+        generarTablero();
+        // this.setSize(600, 700);
     }
 
     /**
@@ -30,16 +52,19 @@ public class TableroGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(700, 500));
+        setResizable(false);
+        setSize(new java.awt.Dimension(700, 500));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 700, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 500, Short.MAX_VALUE)
         );
 
         pack();
@@ -48,6 +73,34 @@ public class TableroGUI extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    private void generarTablero() {
+
+        //this.setLayout(new FlowLayout(FlowLayout.CENTER,0,0));
+        JPanel panel = new JPanel(); // Assuming 8x8 grid for buttons
+        panel.setBackground(Color.red);
+        int buttonSize = 50;
+        panel.setSize(buttonSize*8,buttonSize*8);
+        
+        //centramos horizontalmente el panel
+        panel.setLocation((this.getWidth()-panel.getWidth())/2,(this.getHeight()-panel.getHeight())/2);
+        panel.setLayout(new GridLayout(8,8));
+            
+        this.add(panel);
+
+        for (int i = 0; i < 64; i++) {
+            JButton button = new JButton("0");
+          
+           // button.setPreferredSize(new Dimension(5,5));
+           //button.setSize(5,5);
+           button.setSize(buttonSize, buttonSize);
+            panel.add(button);
+            System.out.println(button.getSize().height +" "+ button.getSize().width );
+        }
+        
+   
+       
+    }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -72,10 +125,12 @@ public class TableroGUI extends javax.swing.JFrame {
         }
         //</editor-fold>
 
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new TableroGUI().setVisible(true);
+
             }
         });
     }

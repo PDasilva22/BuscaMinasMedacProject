@@ -20,12 +20,14 @@ public class Jugador {
     private int puntuacion;
     private Date fecha;
 
+    //Este es el constructor basico que se utiliza en el codigo
     public Jugador(String nombre) {
         this.nombre = nombre;
         this.puntuacion = 0;
         this.fecha = new Date();
     }
 
+    //Este constructor con sobrecarga es para poder extraer los datos de la BBDD
     public Jugador(String nombre, int puntuacion, Date fecha) {
         this.nombre = nombre;
         this.puntuacion = puntuacion;

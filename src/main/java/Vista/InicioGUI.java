@@ -21,6 +21,8 @@ public class InicioGUI extends javax.swing.JFrame {
     private ConexionMySQL conexion;
     private ControladorJugadores controlador;
     private ArrayList <Jugador> jugadores;
+    private Jugador jActual;
+    
     /**
      * Creates new form InicioGUI
      */
@@ -28,9 +30,9 @@ public class InicioGUI extends javax.swing.JFrame {
         initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
-        this.setSize(450, 500);
+       // this.setSize(450, 500);
 
-         conexion=new ConexionMySQL("root"," ","buscaminas");
+       /*  conexion=new ConexionMySQL("root"," ","buscaminas");
            controlador=new ControladorJugadores(conexion);
         try {
             conexion.conectar();
@@ -43,7 +45,7 @@ public class InicioGUI extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(InicioGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+        */
         
     }
 
@@ -56,21 +58,49 @@ public class InicioGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jTF_NombreJugador = new javax.swing.JTextField();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(700, 500));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setText("Jugador:");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 70, 30));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Busca Minas");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, 170, 60));
+
+        jButton1.setText("Jugar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 270, 110, 50));
+        getContentPane().add(jTF_NombreJugador, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 150, 80, 20));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        jActual = new Jugador(this.jTF_NombreJugador.getText());
+        
+
+        //pasamos el jugador a la nueva ventana
+        TableroGUI tableroGUI = new TableroGUI(jActual);
+        //ocultamos la ventana actual
+        this.setVisible(false);
+        //mostramos nueva ventana
+        tableroGUI.setVisible(true);
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -108,5 +138,9 @@ public class InicioGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JTextField jTF_NombreJugador;
     // End of variables declaration//GEN-END:variables
 }
