@@ -26,6 +26,14 @@ public class Jugador {
         this.fecha = new Date();
     }
 
+    public Jugador(String nombre, int puntuacion, Date fecha) {
+        this.nombre = nombre;
+        this.puntuacion = puntuacion;
+        this.fecha = fecha;
+    }
+    
+    
+
     @Override
     public String toString() {
         return "Jugador{" + "nombre=" + nombre + ", puntuacion=" + puntuacion + ", fecha=" + fecha + '}';
