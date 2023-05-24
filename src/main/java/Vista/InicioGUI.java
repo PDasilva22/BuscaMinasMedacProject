@@ -15,6 +15,10 @@ public class InicioGUI extends javax.swing.JFrame {
      */
     public InicioGUI() {
         initComponents();
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
+        this.setSize(450, 500);
+        
     }
 
     /**
