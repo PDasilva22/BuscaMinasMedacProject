@@ -29,8 +29,8 @@ public class ControladorJugadores {
         while (rset.next()) {
             String nombre = rset.getString("Nombre");
             int puntuacion = rset.getInt("Puntuacion");
-            String fecha = rset.getString("Fecha");
-            Jugador p = new Jugador(nombre);
+            Date fecha = rset.getDate("Fecha");
+            Jugador p = new Jugador(nombre,puntuacion,fecha);
             lista.add(p);
         }
         return lista;
