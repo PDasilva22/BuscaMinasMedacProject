@@ -4,6 +4,8 @@
  */
 package Vista;
 
+import Controlador.ConexionMySQL;
+import Controlador.ControladorJugadores;
 import Implementacion.confTablero;
 import Modelo.Jugador;
 import java.awt.Color;
@@ -12,8 +14,13 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -29,9 +36,13 @@ public class TableroGUI extends javax.swing.JFrame {
     private Jugador jActual;
     private ArrayList<JButton> listaBotones = new ArrayList<JButton>();
     private ArrayList<Integer> tablero = new confTablero().obtenerTablero();
+    //el valor que se le resta al usuario cada ves que falla
+    private int resto = 100;
+    private JFrame inicioGUI;
 
     public TableroGUI() {
         initComponents();
+
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         generarTablero();
@@ -39,9 +50,10 @@ public class TableroGUI extends javax.swing.JFrame {
         // this.setSize(600, 700);
     }
 
-    public TableroGUI(Jugador jActual) {
+    public TableroGUI(Jugador jActual, JFrame inicioGUI) {
         initComponents();
         this.jActual = jActual;
+        this.inicioGUI = inicioGUI;
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         generarTablero();
@@ -76,6 +88,46 @@ public class TableroGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void victoria() {
+
+        //guardamos la puntuacion del jugador
+        ConexionMySQL conexion = new ConexionMySQL("root", " ", "buscaminas");
+        ControladorJugadores controlador = new ControladorJugadores(conexion);
+        try {
+            conexion.conectar();
+            controlador.insertarJugador(jActual);
+        } catch (SQLException ex) {
+            Logger.getLogger(TableroGUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(TableroGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        JOptionPane.showMessageDialog(rootPane, "Has ganado la partida");
+        this.dispose();
+        this.inicioGUI.setVisible(true);
+
+    }
+
+    private void gameOver() {
+
+        //guardamos la puntuacion del jugador
+        ConexionMySQL conexion = new ConexionMySQL("root", " ", "buscaminas");
+        ControladorJugadores controlador = new ControladorJugadores(conexion);
+        try {
+            conexion.conectar();
+            controlador.insertarJugador(jActual);
+        } catch (SQLException ex) {
+            Logger.getLogger(TableroGUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(TableroGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        JOptionPane.showMessageDialog(rootPane, "Has perdido la partida");
+        this.dispose();
+        this.inicioGUI.setVisible(true);
+
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -108,7 +160,30 @@ public class TableroGUI extends javax.swing.JFrame {
                 public void actionPerformed(ActionEvent e) {
                     //cuando se pulsa cualquier boton ocurre esto
 
-                    listaBotones.get(index).setText(tablero.get(index).toString());
+                    //comprobamos que no halla sido pulsado antes
+                    if (listaBotones.get(index).getText().isEmpty()) {
+                        listaBotones.get(index).setText(tablero.get(index).toString());
+
+                        //comprobamos que no halla acertado
+                        if (!listaBotones.get(index).getText().equalsIgnoreCase("0")) {
+                            jActual.setPuntuacion(jActual.getPuntuacion() - resto);
+
+                            //comprobamos que no se halla quedado sin puntos
+                            //comprueba si tiene menos puntos que los que cuesta tirar una vez
+                            if (jActual.getPuntuacion() < resto) {
+                                //si no tiene puntos
+                                gameOver();
+                            }
+                        } else {
+                            //si se ha encontrado
+
+                            victoria();
+
+                        }
+
+                    } else {
+                        //ya se ha pulsado este boton
+                    }
 
                 }
             });

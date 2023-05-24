@@ -23,7 +23,7 @@ public class Jugador {
     //Este es el constructor basico que se utiliza en el codigo
     public Jugador(String nombre) {
         this.nombre = nombre;
-        this.puntuacion = 0;
+        this.puntuacion = 500;
         this.fecha = new Date();
     }
 

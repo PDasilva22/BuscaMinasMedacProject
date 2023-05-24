@@ -84,7 +84,7 @@ public class InicioGUI extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 270, 110, 50));
-        getContentPane().add(jTF_NombreJugador, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 150, 80, 20));
+        getContentPane().add(jTF_NombreJugador, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, 100, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -96,7 +96,7 @@ public class InicioGUI extends javax.swing.JFrame {
         
 
         //pasamos el jugador a la nueva ventana
-        TableroGUI tableroGUI = new TableroGUI(jActual);
+        TableroGUI tableroGUI = new TableroGUI(jActual,this);
         //ocultamos la ventana actual
         this.setVisible(false);
         //mostramos nueva ventana
