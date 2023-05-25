@@ -58,6 +58,8 @@ public class TableroGUI extends javax.swing.JFrame {
         this.setResizable(false);
         this.setLocationRelativeTo(null);
       
+        jLabelPuntuacion.setText(Integer.toString(jActual.getPuntuacion()));
+        
         
         this.dificultad = dificultad;
         switch (dificultad) {
@@ -88,6 +90,8 @@ public class TableroGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabelModoJuego = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabelPuntuacion = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -98,6 +102,12 @@ public class TableroGUI extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(700, 500));
 
         jLabelModoJuego.setText("Dificultad: ");
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("PUNTUACION");
+
+        jLabelPuntuacion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelPuntuacion.setText("00000");
 
         jMenuBar1.setMargin(new java.awt.Insets(10, 10, 10, 10));
 
@@ -122,16 +132,25 @@ public class TableroGUI extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(541, Short.MAX_VALUE)
-                .addComponent(jLabelModoJuego, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(221, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelPuntuacion, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(118, 118, 118)
+                        .addComponent(jLabelModoJuego, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(14, 14, 14))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabelModoJuego, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(445, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelModoJuego, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelPuntuacion)
+                .addContainerGap(423, Short.MAX_VALUE))
         );
 
         pack();
@@ -187,9 +206,9 @@ public class TableroGUI extends javax.swing.JFrame {
      */
     private void generarTablero() {
 
-        //this.setLayout(new FlowLayout(FlowLayout.CENTER,0,0));
-        JPanel panel = new JPanel(); // Assuming 8x8 grid for buttons
-        panel.setBackground(Color.red);
+       
+        JPanel panel = new JPanel();
+        panel.setBackground(new java.awt.Color(200,200,200));
         int buttonSize = 50;
         panel.setSize(buttonSize * 8, buttonSize * 8);
 
@@ -221,9 +240,10 @@ public class TableroGUI extends javax.swing.JFrame {
 
                             //comprobamos que no halla acertado
                             if (!listaBotones.get(index).getText().equalsIgnoreCase("0")) {
-                                System.out.println(jActual.getPuntuacion());
+                                //System.out.println(jActual.getPuntuacion());
                                 jActual.setPuntuacion(jActual.getPuntuacion() - resto);
-                                System.out.println(jActual.getPuntuacion());
+                                //actualizamos puntuacion cada jugada en el jlabel
+                                jLabelPuntuacion.setText(Integer.toString(jActual.getPuntuacion()));
                                 //comprobamos que no se halla quedado sin puntos
                                 //comprueba si tiene menos puntos que los que cuesta tirar una vez
                                 if (jActual.getPuntuacion() < resto) {
@@ -358,7 +378,9 @@ public class TableroGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelModoJuego;
+    private javax.swing.JLabel jLabelPuntuacion;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;

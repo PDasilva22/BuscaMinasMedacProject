@@ -58,8 +58,15 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="541" max="32767" attributes="0"/>
-              <Component id="jLabelModoJuego" min="-2" pref="145" max="-2" attributes="0"/>
+              <EmptySpace pref="221" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jLabelPuntuacion" min="-2" pref="202" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="jLabel1" min="-2" pref="202" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="118" max="-2" attributes="0"/>
+                      <Component id="jLabelModoJuego" min="-2" pref="145" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
               <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -68,8 +75,13 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jLabelModoJuego" min="-2" pref="26" max="-2" attributes="0"/>
-              <EmptySpace pref="445" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabelModoJuego" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jLabelPuntuacion" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="423" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -78,6 +90,18 @@
     <Component class="javax.swing.JLabel" name="jLabelModoJuego">
       <Properties>
         <Property name="text" type="java.lang.String" value="Dificultad: "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="PUNTUACION"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelPuntuacion">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="00000"/>
       </Properties>
     </Component>
   </SubComponents>

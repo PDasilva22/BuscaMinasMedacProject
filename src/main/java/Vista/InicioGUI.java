@@ -128,9 +128,13 @@ public class InicioGUI extends javax.swing.JFrame {
         } else if (medioButton.isSelected()){
             jActual.setPuntuacion(6000);
             crearTablero(2);
-        } else {
+        } else if(dificilButton.isSelected()) {
             jActual.setPuntuacion(9000);
             crearTablero(3);
+        }
+        else {
+            jActual.setPuntuacion(3000);
+            crearTablero(1);
         }
         
 

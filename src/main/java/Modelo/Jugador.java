@@ -26,7 +26,7 @@ public class Jugador {
         this.nombre = nombre;
         this.puntuacion = 500;
         this.fecha = new Date();
-        this.dificultad="facil";
+     
     }
 
     //Este constructor con sobrecarga es para poder extraer los datos de la BBDD
@@ -43,13 +43,13 @@ public class Jugador {
     public void setDificultad(int dificultad) {
         switch (dificultad) {
             case 1:
-                this.dificultad="Facil.";
+                this.dificultad="FACIL.";
                 break;
             case 2:
-                this.dificultad="Media.";
+                this.dificultad="MEDIA.";
                 break;
             default:
-                this.dificultad="Kiko.";
+                this.dificultad="KIKO.";
                 break;
         }
      
