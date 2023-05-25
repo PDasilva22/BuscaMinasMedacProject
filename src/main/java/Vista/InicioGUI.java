@@ -70,17 +70,18 @@ public class InicioGUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(700, 500));
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Nombre del Equipo:");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 170, 30));
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(30, 200, 220, 30);
 
         jLabel2.setFont(new java.awt.Font("Segoe Print", 1, 48)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Medac\\Documents\\NetBeansProjects\\BuscaMinasMedacProject\\src\\main\\java\\Vista\\kiko.png")); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("BUSCA KIKOS");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 660, 150));
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(20, 10, 660, 150);
 
         jButton1.setText("Jugar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -88,24 +89,31 @@ public class InicioGUI extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, 110, 50));
-        getContentPane().add(jTF_NombreJugador, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 200, 250, 30));
+        getContentPane().add(jButton1);
+        jButton1.setBounds(270, 270, 110, 50);
+        getContentPane().add(jTF_NombreJugador);
+        jTF_NombreJugador.setBounds(260, 200, 220, 30);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Dificultad");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 190, -1, -1));
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(502, 190, 130, 32);
 
         buttonGroup1.add(facilButton);
         facilButton.setText("Fácil");
-        getContentPane().add(facilButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 240, -1, -1));
+        getContentPane().add(facilButton);
+        facilButton.setBounds(530, 240, 60, 21);
 
         buttonGroup1.add(medioButton);
         medioButton.setText("Medio");
-        getContentPane().add(medioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 270, -1, -1));
+        getContentPane().add(medioButton);
+        medioButton.setBounds(530, 270, 57, 21);
 
         buttonGroup1.add(dificilButton);
         dificilButton.setText("Difícil");
-        getContentPane().add(dificilButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 300, -1, -1));
+        getContentPane().add(dificilButton);
+        dificilButton.setBounds(530, 300, 52, 21);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -120,9 +128,13 @@ public class InicioGUI extends javax.swing.JFrame {
         } else if (medioButton.isSelected()){
             jActual.setPuntuacion(6000);
             crearTablero(2);
-        } else {
+        } else if(dificilButton.isSelected()) {
             jActual.setPuntuacion(9000);
             crearTablero(3);
+        }
+        else {
+            jActual.setPuntuacion(3000);
+            crearTablero(1);
         }
         
 
@@ -132,7 +144,8 @@ public class InicioGUI extends javax.swing.JFrame {
 
     private void crearTablero(int dificultad) {
         //pasamos el jugador a la nueva ventana
-        TableroGUI tableroGUI = new TableroGUI(jActual,this, dificultad);
+        jActual.setDificultad(dificultad);
+        TableroGUI tableroGUI = new TableroGUI(jActual,this,dificultad);
         //ocultamos la ventana actual
         this.setVisible(false);
         //mostramos nueva ventana
