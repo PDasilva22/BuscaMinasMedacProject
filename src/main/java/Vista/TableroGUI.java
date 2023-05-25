@@ -12,6 +12,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -35,9 +36,10 @@ public class TableroGUI extends javax.swing.JFrame {
     //El jugador que recibiremos de InicioGUI.java creado con el nombre insertado por el jugador.
     private Jugador jActual;
     private ArrayList<JButton> listaBotones = new ArrayList<JButton>();
-    private ArrayList<Integer> tablero = new confTablero().obtenerTablero();
-    //el valor que se le resta al usuario cada ves que falla
-    private int resto = 100;
+    private ArrayList<Integer> tablero;
+    private int dificultad;
+    //el valor que se le resta al usuario cada ves que falla - Configurado en el constructor dependiendo de la dificultad
+    private int resto;
     private JFrame inicioGUI;
 
     public TableroGUI() {
@@ -50,12 +52,26 @@ public class TableroGUI extends javax.swing.JFrame {
         // this.setSize(600, 700);
     }
 
-    public TableroGUI(Jugador jActual, JFrame inicioGUI) {
+    public TableroGUI(Jugador jActual, JFrame inicioGUI, int dificultad) {
         initComponents();
         this.jActual = jActual;
         this.inicioGUI = inicioGUI;
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+        this.dificultad = dificultad;
+        switch (dificultad) {
+            case 1:
+                resto = 1000;
+                break;
+            case 2:
+                resto = 2000;
+                break;
+            case 3:
+                resto = 3000;
+                break;
+        }
+        //Inicializamos el tablero dependiendo de la dificultad seleccionada
+        tablero = new confTablero().obtenerTablero(dificultad);
         generarTablero();
         // this.setSize(600, 700);
     }
@@ -161,30 +177,105 @@ public class TableroGUI extends javax.swing.JFrame {
                     //cuando se pulsa cualquier boton ocurre esto
 
                     //comprobamos que no halla sido pulsado antes
-                    if (listaBotones.get(index).getText().isEmpty()) {
-                        listaBotones.get(index).setText(tablero.get(index).toString());
+                    if (dificultad != 3) {
+                        if (listaBotones.get(index).getText().isEmpty()) {
+                            listaBotones.get(index).setText(tablero.get(index).toString());
 
-                        //comprobamos que no halla acertado
-                        if (!listaBotones.get(index).getText().equalsIgnoreCase("0")) {
-                            jActual.setPuntuacion(jActual.getPuntuacion() - resto);
+                            //comprobamos que no halla acertado
+                            if (!listaBotones.get(index).getText().equalsIgnoreCase("0")) {
+                                System.out.println(jActual.getPuntuacion());
+                                jActual.setPuntuacion(jActual.getPuntuacion() - resto);
+                                System.out.println(jActual.getPuntuacion());
+                                //comprobamos que no se halla quedado sin puntos
+                                //comprueba si tiene menos puntos que los que cuesta tirar una vez
+                                if (jActual.getPuntuacion() < resto) {
+                                    //si no tiene puntos
+                                    gameOver();
+                                }
+                            } else {
+                                //si se ha encontrado
 
-                            //comprobamos que no se halla quedado sin puntos
-                            //comprueba si tiene menos puntos que los que cuesta tirar una vez
-                            if (jActual.getPuntuacion() < resto) {
-                                //si no tiene puntos
-                                gameOver();
+                                victoria();
+
                             }
+
                         } else {
-                            //si se ha encontrado
-
-                            victoria();
-
+                            //ya se ha pulsado este boton
                         }
-
                     } else {
-                        //ya se ha pulsado este boton
+                        if (listaBotones.get(index).getText().isEmpty()) {
+                            boolean valido = true;
+                            playGame(valido);
+                            //comprobamos que no halla acertado
+                            if (!listaBotones.get(index).getText().equalsIgnoreCase("0")) {
+                                jActual.setPuntuacion(jActual.getPuntuacion() - resto);
+
+                                //comprobamos que no se halla quedado sin puntos
+                                //comprueba si tiene menos puntos que los que cuesta tirar una vez
+                                if (jActual.getPuntuacion() < resto) {
+                                    //si no tiene puntos
+                                    gameOver();
+                                }
+                            } else {
+                                //si se ha encontrado
+
+                                victoria();
+
+                            }
+                        }
+                    }
+                    listaBotones.get(index).setEnabled(false);
+
+                }
+
+                private void playGame(boolean valido) throws HeadlessException {
+                    String seleccion;
+                    int userSeleccion;
+                    int compSeleccion;
+                    do {
+                        do {
+                            seleccion = JOptionPane.showInputDialog("¿Piedra, Papel o Tijeras? \nSolo si ganas te diré a cuánto estoy del jugador");
+                            seleccion.toLowerCase();
+                            System.out.println(seleccion);
+                            if (!seleccion.equals("piedra") && !seleccion.equals("tijeras") && !seleccion.equals("papel")) {
+                                JOptionPane.showMessageDialog(null, "Esa opción no existe", "Incorrecto", JOptionPane.ERROR_MESSAGE);
+                                valido = false;
+                            }
+                        } while (!valido);
+                        userSeleccion = 0;
+                        if (seleccion.equals("piedra")) {
+                            userSeleccion = 1;
+                        } else if (seleccion.equals("papel")) {
+                            userSeleccion = 2;
+                        } else if (seleccion.equals("tijeras")) {
+                            userSeleccion = 3;
+                        }
+                        compSeleccion =(int) (Math.random() * 4);
+                        if(userSeleccion == compSeleccion){
+                            //Modificar por un panel personalizado de mensaje
+                            JOptionPane.showMessageDialog(null, "¡Hemos empatado! Vamos a repetir la partida", "Empate", JOptionPane.ERROR_MESSAGE);
+                        }
+                    } while (userSeleccion == compSeleccion);
+                    if (comprobarResultado(userSeleccion, compSeleccion)) {
+                        listaBotones.get(index).setText(tablero.get(index).toString());
+                    } else {
+                        //Editar por un panel personalizado
+                        JOptionPane.showMessageDialog(null, "Has perdido la partida", "Derrota", JOptionPane.WARNING_MESSAGE);
+                    }
+                }
+
+                private boolean comprobarResultado(int userSeleccion, int compSeleccion) {
+                    boolean victory = false;
+
+                    if (userSeleccion == 1 && compSeleccion == 3) {
+                        victory = true;
+                    } else if (userSeleccion == 3 && compSeleccion == 2) {
+                        victory = true;
+                    } else if (userSeleccion == 2 && compSeleccion == 1) {
+                        victory = true;
                     }
 
+                    return victory;
                 }
             });
             //añadimos los botones a la lista para manipularlos mas tarde

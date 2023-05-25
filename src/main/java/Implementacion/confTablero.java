@@ -24,14 +24,15 @@ public class confTablero extends JFrame {
      * @param args the command line arguments
      * @return retorna el tablero en formato array bidimensional
      */
-    public ArrayList<Integer> obtenerTablero() {
+    public ArrayList<Integer> obtenerTablero(int dificultad) {
 
         int bi[][] = new int[8][8];
         int a = (int) (Math.random() * 8);
         int b = (int) (Math.random() * 8);
         int aux_a = a, aux_b = b;
         bi[a][b] = 0;
-
+        
+        //Se rellena la tabla en relación a la distancia en la que se encuentra el jugador
         for (int i = 0; i < bi.length; i++) {
             for (int j = 0; j < bi[i].length; j++) {
                 if (comprobarA(a, i)) {
@@ -51,17 +52,7 @@ public class confTablero extends JFrame {
                 }
             }
         }
-        //Se crea una bomba contemplando que no se posicione en el mismo numero que el jugador o ¡una bomba
-        int contador = 3; //Este contador seria segun el nivel de dificultad
-        for (int i = 0; i < contador; i++) {
-            int aBomba;
-            int bBomba;
-            do {
-                aBomba = (int) (Math.random() * 8);
-                bBomba = (int) (Math.random() * 8);
-            } while (a == aBomba && b == bBomba || bi[aBomba][bBomba] == 9);
-            bi[aBomba][bBomba] = 9;
-        }
+        configBombas(a, b, bi, dificultad);
 
         ArrayList<Integer> arrayList = new ArrayList<>();
 
@@ -71,6 +62,31 @@ public class confTablero extends JFrame {
             }
         }
         return arrayList;
+    }
+
+    private void configBombas(int a, int b, int[][] bi, int dificultad) {
+        //Se crea una bomba contemplando que no se posicione en el mismo numero que el jugador o ¡una bomba
+        int contador = 1;
+        switch(dificultad){
+            case 1:
+                contador = 1;
+                break;
+            case 2:
+            case 3:
+                contador = 3;
+                break;
+        }
+            
+    //Este contador seria segun el nivel de dificultad
+        for (int i = 0; i < contador; i++) {
+            int aBomba;
+            int bBomba;
+            do {
+                aBomba = (int) (Math.random() * 8);
+                bBomba = (int) (Math.random() * 8);
+            } while (a == aBomba && b == bBomba || bi[aBomba][bBomba] == 9);
+            bi[aBomba][bBomba] = 9;
+        }
     }
 
     /*
