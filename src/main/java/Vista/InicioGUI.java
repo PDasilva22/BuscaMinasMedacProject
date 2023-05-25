@@ -11,34 +11,28 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.ImageIcon;
 
 /**
  *
  * @author Pato
  */
 public class InicioGUI extends javax.swing.JFrame {
-
+    
     private ConexionMySQL conexion;
     private ControladorJugadores controlador;
-    private ArrayList<Jugador> jugadores;
+    private ArrayList <Jugador> jugadores;
     private Jugador jActual;
-
+    
     /**
      * Creates new form InicioGUI
      */
-    public InicioGUI() {
+    public InicioGUI()  {
         initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
-<<<<<<< HEAD
-        this.setResizable(false); //No se puede cambiar de tamaño
-=======
        this.setSize(450, 500);
->>>>>>> da5aa01b9cf05a2a3ae73c0fcec042551766f320
 
-
-        /*  conexion=new ConexionMySQL("root"," ","buscaminas");
+       /*  conexion=new ConexionMySQL("root"," ","buscaminas");
            controlador=new ControladorJugadores(conexion);
         try {
             conexion.conectar();
@@ -51,7 +45,8 @@ public class InicioGUI extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(InicioGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-         */
+        */
+        
     }
 
     /**
@@ -63,30 +58,30 @@ public class InicioGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jTF_NombreJugador = new javax.swing.JTextField();
-<<<<<<< HEAD
-=======
         jLabel3 = new javax.swing.JLabel();
         facilButton = new javax.swing.JRadioButton();
         medioButton = new javax.swing.JRadioButton();
         dificilButton = new javax.swing.JRadioButton();
->>>>>>> da5aa01b9cf05a2a3ae73c0fcec042551766f320
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(700, 500));
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Nombre del Equipo:");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 170, 30));
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(30, 200, 220, 30);
 
         jLabel2.setFont(new java.awt.Font("Segoe Print", 1, 48)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("BUSCA KIKOS");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 660, 150));
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(20, 10, 660, 150);
 
         jButton1.setText("Jugar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -94,24 +89,21 @@ public class InicioGUI extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-<<<<<<< HEAD
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, 110, 50));
-        getContentPane().add(jTF_NombreJugador, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 200, 250, 30));
-=======
         getContentPane().add(jButton1);
         jButton1.setBounds(270, 270, 110, 50);
         getContentPane().add(jTF_NombreJugador);
         jTF_NombreJugador.setBounds(260, 200, 220, 30);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Dificultad");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(530, 190, 100, 32);
+        jLabel3.setBounds(502, 190, 130, 32);
 
         buttonGroup1.add(facilButton);
         facilButton.setText("Fácil");
         getContentPane().add(facilButton);
-        facilButton.setBounds(530, 240, 47, 21);
+        facilButton.setBounds(530, 240, 60, 21);
 
         buttonGroup1.add(medioButton);
         medioButton.setText("Medio");
@@ -121,8 +113,7 @@ public class InicioGUI extends javax.swing.JFrame {
         buttonGroup1.add(dificilButton);
         dificilButton.setText("Difícil");
         getContentPane().add(dificilButton);
-        dificilButton.setBounds(530, 300, 54, 21);
->>>>>>> da5aa01b9cf05a2a3ae73c0fcec042551766f320
+        dificilButton.setBounds(530, 300, 52, 21);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -130,15 +121,31 @@ public class InicioGUI extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         jActual = new Jugador(this.jTF_NombreJugador.getText());
+        if(facilButton.isSelected()){
+            jActual.setPuntuacion(3000);
+            //Metodo para crear el tablero dependiendo de la dificultad seleccionada
+            crearTablero(1);
+        } else if (medioButton.isSelected()){
+            jActual.setPuntuacion(6000);
+            crearTablero(2);
+        } else {
+            jActual.setPuntuacion(9000);
+            crearTablero(3);
+        }
+        
 
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void crearTablero(int dificultad) {
         //pasamos el jugador a la nueva ventana
-        TableroGUI tableroGUI = new TableroGUI(jActual, this);
+        TableroGUI tableroGUI = new TableroGUI(jActual,this);
         //ocultamos la ventana actual
         this.setVisible(false);
         //mostramos nueva ventana
         tableroGUI.setVisible(true);
-
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }
 
     /**
      * @param args the command line arguments
@@ -176,13 +183,14 @@ public class InicioGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JRadioButton dificilButton;
+    private javax.swing.JRadioButton facilButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-<<<<<<< HEAD
-=======
     private javax.swing.JLabel jLabel3;
->>>>>>> da5aa01b9cf05a2a3ae73c0fcec042551766f320
     private javax.swing.JTextField jTF_NombreJugador;
+    private javax.swing.JRadioButton medioButton;
     // End of variables declaration//GEN-END:variables
 }
