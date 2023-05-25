@@ -31,7 +31,11 @@ public class InicioGUI extends javax.swing.JFrame {
         initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+<<<<<<< HEAD
         this.setResizable(false); //No se puede cambiar de tamaño
+=======
+       this.setSize(450, 500);
+>>>>>>> da5aa01b9cf05a2a3ae73c0fcec042551766f320
 
 
         /*  conexion=new ConexionMySQL("root"," ","buscaminas");
@@ -63,6 +67,13 @@ public class InicioGUI extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jTF_NombreJugador = new javax.swing.JTextField();
+<<<<<<< HEAD
+=======
+        jLabel3 = new javax.swing.JLabel();
+        facilButton = new javax.swing.JRadioButton();
+        medioButton = new javax.swing.JRadioButton();
+        dificilButton = new javax.swing.JRadioButton();
+>>>>>>> da5aa01b9cf05a2a3ae73c0fcec042551766f320
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(700, 500));
@@ -83,8 +94,35 @@ public class InicioGUI extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+<<<<<<< HEAD
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, 110, 50));
         getContentPane().add(jTF_NombreJugador, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 200, 250, 30));
+=======
+        getContentPane().add(jButton1);
+        jButton1.setBounds(270, 270, 110, 50);
+        getContentPane().add(jTF_NombreJugador);
+        jTF_NombreJugador.setBounds(260, 200, 220, 30);
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel3.setText("Dificultad");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(530, 190, 100, 32);
+
+        buttonGroup1.add(facilButton);
+        facilButton.setText("Fácil");
+        getContentPane().add(facilButton);
+        facilButton.setBounds(530, 240, 47, 21);
+
+        buttonGroup1.add(medioButton);
+        medioButton.setText("Medio");
+        getContentPane().add(medioButton);
+        medioButton.setBounds(530, 270, 57, 21);
+
+        buttonGroup1.add(dificilButton);
+        dificilButton.setText("Difícil");
+        getContentPane().add(dificilButton);
+        dificilButton.setBounds(530, 300, 54, 21);
+>>>>>>> da5aa01b9cf05a2a3ae73c0fcec042551766f320
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -141,6 +179,10 @@ public class InicioGUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+<<<<<<< HEAD
+=======
+    private javax.swing.JLabel jLabel3;
+>>>>>>> da5aa01b9cf05a2a3ae73c0fcec042551766f320
     private javax.swing.JTextField jTF_NombreJugador;
     // End of variables declaration//GEN-END:variables
 }
