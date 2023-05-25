@@ -67,20 +67,22 @@ public class InicioGUI extends javax.swing.JFrame {
         facilButton = new javax.swing.JRadioButton();
         medioButton = new javax.swing.JRadioButton();
         dificilButton = new javax.swing.JRadioButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(700, 500));
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Nombre del Equipo:");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 170, 30));
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(30, 200, 220, 30);
 
         jLabel2.setFont(new java.awt.Font("Segoe Print", 1, 48)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Medac\\Documents\\NetBeansProjects\\BuscaMinasMedacProject\\src\\main\\java\\Vista\\kiko.png")); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("BUSCA KIKOS");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 660, 150));
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(20, 10, 660, 150);
 
         jButton1.setText("Jugar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -88,24 +90,35 @@ public class InicioGUI extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, 110, 50));
-        getContentPane().add(jTF_NombreJugador, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 200, 250, 30));
+        getContentPane().add(jButton1);
+        jButton1.setBounds(270, 270, 110, 50);
+        getContentPane().add(jTF_NombreJugador);
+        jTF_NombreJugador.setBounds(260, 200, 220, 30);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel3.setText("Dificultad");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 190, -1, -1));
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(530, 190, 100, 32);
 
         buttonGroup1.add(facilButton);
         facilButton.setText("Fácil");
-        getContentPane().add(facilButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 240, -1, -1));
+        getContentPane().add(facilButton);
+        facilButton.setBounds(530, 240, 47, 21);
 
         buttonGroup1.add(medioButton);
         medioButton.setText("Medio");
-        getContentPane().add(medioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 270, -1, -1));
+        getContentPane().add(medioButton);
+        medioButton.setBounds(530, 270, 57, 21);
 
         buttonGroup1.add(dificilButton);
         dificilButton.setText("Difícil");
-        getContentPane().add(dificilButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 300, -1, -1));
+        getContentPane().add(dificilButton);
+        dificilButton.setBounds(530, 300, 54, 21);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\usuario\\Documents\\Lenguaje\\fotor-ai-20230525124434.jpg")); // NOI18N
+        jLabel4.setText("jLabel4");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(0, 0, 742, 700);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -182,6 +195,7 @@ public class InicioGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField jTF_NombreJugador;
     private javax.swing.JRadioButton medioButton;
     // End of variables declaration//GEN-END:variables
