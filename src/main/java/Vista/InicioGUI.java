@@ -30,7 +30,7 @@ public class InicioGUI extends javax.swing.JFrame {
         initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
-       // this.setSize(450, 500);
+       this.setSize(450, 500);
 
        /*  conexion=new ConexionMySQL("root"," ","buscaminas");
            controlador=new ControladorJugadores(conexion);
@@ -73,7 +73,7 @@ public class InicioGUI extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe Print", 1, 48)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/kiko.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Medac\\Documents\\NetBeansProjects\\BuscaMinasMedacProject\\kiko.png")); // NOI18N
         jLabel2.setText("BUSCA KIKOS");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 660, 150));
 
@@ -83,7 +83,7 @@ public class InicioGUI extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 270, 110, 50));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, 110, 50));
         getContentPane().add(jTF_NombreJugador, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 200, 250, 30));
 
         pack();
