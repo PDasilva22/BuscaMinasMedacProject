@@ -254,6 +254,7 @@ public class TableroGUI extends javax.swing.JFrame {
                             seleccion = JOptionPane.showInputDialog("¿Piedra, Papel o Tijeras? \nSolo si ganas te diré a cuánto estoy del jugador");
                             seleccion.toLowerCase();
                             System.out.println(seleccion);
+                            valido = true;
                             if (!seleccion.equals("piedra") && !seleccion.equals("tijeras") && !seleccion.equals("papel")) {
                                 JOptionPane.showMessageDialog(null, "Esa opción no existe", "Incorrecto", JOptionPane.ERROR_MESSAGE);
                                 valido = false;
