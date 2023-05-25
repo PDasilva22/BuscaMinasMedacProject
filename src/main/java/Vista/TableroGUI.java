@@ -182,7 +182,7 @@ public class TableroGUI extends javax.swing.JFrame {
         panel.setSize(buttonSize * 8, buttonSize * 8);
 
         //centramos el panel
-        panel.setLocation((this.getWidth() - panel.getWidth()) / 2, (this.getHeight() - panel.getHeight()) / 2);
+        panel.setLocation((this.getWidth() - panel.getWidth()) / 2, (this.getHeight() - panel.getHeight()-jMenuBar1.getHeight()) / 2);
         //un grid layout de 8x8 porque son 64 opciones
         panel.setLayout(new GridLayout(8, 8));
 
