@@ -73,7 +73,7 @@ public class InicioGUI extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe Print", 1, 48)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Medac\\Documents\\NetBeansProjects\\BuscaMinasMedacProject\\kiko.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Medac\\Documents\\NetBeansProjects\\BuscaMinasMedacProject\\src\\main\\java\\Vista\\kiko.png")); // NOI18N
         jLabel2.setText("BUSCA KIKOS");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 660, 150));
 

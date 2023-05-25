@@ -48,7 +48,7 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="2"/>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Medac\Documents\NetBeansProjects\BuscaMinasMedacProject\kiko.png"/>
+          <Image iconType="2" name="C:\Users\Medac\Documents\NetBeansProjects\BuscaMinasMedacProject\src\main\java\Vista\kiko.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="BUSCA KIKOS"/>
       </Properties>
