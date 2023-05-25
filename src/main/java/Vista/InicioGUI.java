@@ -30,7 +30,7 @@ public class InicioGUI extends javax.swing.JFrame {
         initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
-       // this.setSize(450, 500);
+       this.setSize(450, 500);
 
        /*  conexion=new ConexionMySQL("root"," ","buscaminas");
            controlador=new ControladorJugadores(conexion);
@@ -70,17 +70,17 @@ public class InicioGUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(700, 500));
-        setPreferredSize(new java.awt.Dimension(700, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setText("Jugador:");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 70, 30));
+        jLabel1.setText("Nombre del Equipo:");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 170, 30));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Busca Minas");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, 170, 60));
+        jLabel2.setFont(new java.awt.Font("Segoe Print", 1, 48)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Medac\\Documents\\NetBeansProjects\\BuscaMinasMedacProject\\src\\main\\java\\Vista\\kiko.png")); // NOI18N
+        jLabel2.setText("BUSCA KIKOS");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 660, 150));
 
         jButton1.setText("Jugar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -88,8 +88,8 @@ public class InicioGUI extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 270, 110, 50));
-        getContentPane().add(jTF_NombreJugador, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, 100, 30));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, 110, 50));
+        getContentPane().add(jTF_NombreJugador, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 200, 250, 30));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel3.setText("Dificultad");
