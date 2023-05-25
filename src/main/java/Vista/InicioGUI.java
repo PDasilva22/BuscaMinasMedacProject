@@ -67,7 +67,6 @@ public class InicioGUI extends javax.swing.JFrame {
         facilButton = new javax.swing.JRadioButton();
         medioButton = new javax.swing.JRadioButton();
         dificilButton = new javax.swing.JRadioButton();
-        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(700, 500));
@@ -114,12 +113,6 @@ public class InicioGUI extends javax.swing.JFrame {
         dificilButton.setText("Difícil");
         getContentPane().add(dificilButton);
         dificilButton.setBounds(530, 300, 54, 21);
-
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/fondo_inicio.jpg"))); // NOI18N
-        jLabel5.setText("jLabel5");
-        jLabel5.setPreferredSize(new java.awt.Dimension(700, 700));
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(0, -4, 700, 500);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -196,7 +189,6 @@ public class InicioGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField jTF_NombreJugador;
     private javax.swing.JRadioButton medioButton;
     // End of variables declaration//GEN-END:variables
