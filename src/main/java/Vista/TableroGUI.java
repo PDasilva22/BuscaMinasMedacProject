@@ -51,12 +51,14 @@ public class TableroGUI extends javax.swing.JFrame {
         // this.setSize(600, 700);
     }
 
-    public TableroGUI(Jugador jActual, JFrame inicioGUI, int dificultad) {
+    public TableroGUI(Jugador jActual, JFrame inicioGUI) {
         initComponents();
         this.jActual = jActual;
         this.inicioGUI = inicioGUI;
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+        //esta dificultad viene de una variable de inicioGUI que se llama dificultad
+        /*
         this.dificultad = dificultad;
         switch (dificultad) {
             case 1:
@@ -68,7 +70,7 @@ public class TableroGUI extends javax.swing.JFrame {
             case 3:
                 resto = 3000;
                 break;
-        }
+        }*/
         //Inicializamos el tablero dependiendo de la dificultad seleccionada
         tablero = new confTablero().obtenerTablero(dificultad);
         generarTablero();
