@@ -51,14 +51,14 @@ public class TableroGUI extends javax.swing.JFrame {
         // this.setSize(600, 700);
     }
 
-    public TableroGUI(Jugador jActual, JFrame inicioGUI) {
+    public TableroGUI(Jugador jActual, JFrame inicioGUI, int dificultad) {
         initComponents();
         this.jActual = jActual;
         this.inicioGUI = inicioGUI;
         this.setResizable(false);
         this.setLocationRelativeTo(null);
-        //esta dificultad viene de una variable de inicioGUI que se llama dificultad
-        /*
+      
+        
         this.dificultad = dificultad;
         switch (dificultad) {
             case 1:
@@ -70,10 +70,11 @@ public class TableroGUI extends javax.swing.JFrame {
             case 3:
                 resto = 3000;
                 break;
-        }*/
+        }
         //Inicializamos el tablero dependiendo de la dificultad seleccionada
         tablero = new confTablero().obtenerTablero(dificultad);
         generarTablero();
+        this.jLabelModoJuego.setText("Dificultad: "+this.jActual.getDificultad());
         // this.setSize(600, 700);
     }
 
@@ -86,6 +87,7 @@ public class TableroGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabelModoJuego = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -94,6 +96,8 @@ public class TableroGUI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         setSize(new java.awt.Dimension(700, 500));
+
+        jLabelModoJuego.setText("Dificultad: ");
 
         jMenuBar1.setMargin(new java.awt.Insets(10, 10, 10, 10));
 
@@ -117,11 +121,17 @@ public class TableroGUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 700, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(541, Short.MAX_VALUE)
+                .addComponent(jLabelModoJuego, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 477, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelModoJuego, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(445, Short.MAX_VALUE))
         );
 
         pack();
@@ -348,6 +358,7 @@ public class TableroGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabelModoJuego;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;

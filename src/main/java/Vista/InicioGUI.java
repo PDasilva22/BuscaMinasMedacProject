@@ -140,7 +140,8 @@ public class InicioGUI extends javax.swing.JFrame {
 
     private void crearTablero(int dificultad) {
         //pasamos el jugador a la nueva ventana
-        TableroGUI tableroGUI = new TableroGUI(jActual,this);
+        jActual.setDificultad(dificultad);
+        TableroGUI tableroGUI = new TableroGUI(jActual,this,dificultad);
         //ocultamos la ventana actual
         this.setVisible(false);
         //mostramos nueva ventana

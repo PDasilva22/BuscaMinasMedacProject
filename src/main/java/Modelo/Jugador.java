@@ -19,12 +19,14 @@ public class Jugador {
     private String nombre;
     private int puntuacion;
     private Date fecha;
+    private String dificultad;
 
     //Este es el constructor basico que se utiliza en el codigo
     public Jugador(String nombre) {
         this.nombre = nombre;
         this.puntuacion = 500;
         this.fecha = new Date();
+        this.dificultad="facil";
     }
 
     //Este constructor con sobrecarga es para poder extraer los datos de la BBDD
@@ -33,7 +35,27 @@ public class Jugador {
         this.puntuacion = puntuacion;
         this.fecha = fecha;
     }
-    
+
+    public String getDificultad() {
+        return dificultad;
+    }
+
+    public void setDificultad(int dificultad) {
+        switch (dificultad) {
+            case 1:
+                this.dificultad="Facil.";
+                break;
+            case 2:
+                this.dificultad="Media.";
+                break;
+            default:
+                this.dificultad="Kiko.";
+                break;
+        }
+     
+    }
+
+
     
 
     @Override
