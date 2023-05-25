@@ -50,7 +50,11 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe Print" size="48" style="1"/>
         </Property>
+<<<<<<< HEAD
         <Property name="horizontalAlignment" type="int" value="0"/>
+=======
+        <Property name="horizontalAlignment" type="int" value="2"/>
+>>>>>>> 7538e27c0988bca19b9e9b55cab2cfae5a59a293
         <Property name="text" type="java.lang.String" value="BUSCA KIKOS"/>
       </Properties>
       <Constraints>
