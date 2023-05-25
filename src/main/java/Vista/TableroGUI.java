@@ -138,7 +138,6 @@ public class TableroGUI extends javax.swing.JFrame {
             Logger.getLogger(TableroGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        JOptionPane.showMessageDialog(rootPane, "Has perdido la partida");
         this.dispose();
         this.inicioGUI.setVisible(true);
 
@@ -190,6 +189,10 @@ public class TableroGUI extends javax.swing.JFrame {
                                 //comprueba si tiene menos puntos que los que cuesta tirar una vez
                                 if (jActual.getPuntuacion() < resto) {
                                     //si no tiene puntos
+                                    JOptionPane.showMessageDialog(rootPane, "Has perdido la partida");
+                                    gameOver();
+                                } else if (listaBotones.get(index).getText().equalsIgnoreCase("9")) {
+                                    JOptionPane.showMessageDialog(rootPane, "Has perdido la partida. Has pisado una bomba");
                                     gameOver();
                                 }
                             } else {
@@ -214,6 +217,9 @@ public class TableroGUI extends javax.swing.JFrame {
                                 //comprueba si tiene menos puntos que los que cuesta tirar una vez
                                 if (jActual.getPuntuacion() < resto) {
                                     //si no tiene puntos
+                                    gameOver();
+                                } else if (listaBotones.get(index).getText().equalsIgnoreCase("9")) {
+                                    JOptionPane.showMessageDialog(rootPane, "Has perdido la partida. Has pisado una bomba");
                                     gameOver();
                                 }
                             } else {
@@ -250,8 +256,8 @@ public class TableroGUI extends javax.swing.JFrame {
                         } else if (seleccion.equals("tijeras")) {
                             userSeleccion = 3;
                         }
-                        compSeleccion =(int) (Math.random() * 4);
-                        if(userSeleccion == compSeleccion){
+                        compSeleccion = (int) (Math.random() * 4);
+                        if (userSeleccion == compSeleccion) {
                             //Modificar por un panel personalizado de mensaje
                             JOptionPane.showMessageDialog(null, "¡Hemos empatado! Vamos a repetir la partida", "Empate", JOptionPane.ERROR_MESSAGE);
                         }
