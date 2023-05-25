@@ -21,7 +21,7 @@ public class InicioGUI extends javax.swing.JFrame {
     private ConexionMySQL conexion;
     private ControladorJugadores controlador;
     private ArrayList <Jugador> jugadores;
-    private Jugador jActual;
+    private Jugador jActual;  
     
     /**
      * Creates new form InicioGUI
