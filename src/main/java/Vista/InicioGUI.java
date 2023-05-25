@@ -30,7 +30,8 @@ public class InicioGUI extends javax.swing.JFrame {
         initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
-       this.setSize(450, 500);
+        this.setResizable(false); //No se puede cambiar de tamaño
+       //this.setSize(450, 500);
 
        /*  conexion=new ConexionMySQL("root"," ","buscaminas");
            controlador=new ControladorJugadores(conexion);

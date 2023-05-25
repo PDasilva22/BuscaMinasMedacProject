@@ -42,7 +42,6 @@ public class TableroGUI extends javax.swing.JFrame {
 
     public TableroGUI() {
         initComponents();
-
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         generarTablero();
@@ -84,6 +83,11 @@ public class TableroGUI extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Información");
+        jMenu2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu2ActionPerformed(evt);
+            }
+        });
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Puntuación");
@@ -104,6 +108,11 @@ public class TableroGUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
+       //BOTON INFORMACION
+       
+    }//GEN-LAST:event_jMenu2ActionPerformed
 
     private void victoria() {
 
