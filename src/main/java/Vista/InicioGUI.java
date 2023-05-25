@@ -30,8 +30,7 @@ public class InicioGUI extends javax.swing.JFrame {
         initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
-        this.setResizable(false); //No se puede cambiar de tamaño
-       //this.setSize(450, 500);
+       this.setSize(450, 500);
 
        /*  conexion=new ConexionMySQL("root"," ","buscaminas");
            controlador=new ControladorJugadores(conexion);
@@ -68,7 +67,7 @@ public class InicioGUI extends javax.swing.JFrame {
         facilButton = new javax.swing.JRadioButton();
         medioButton = new javax.swing.JRadioButton();
         dificilButton = new javax.swing.JRadioButton();
-        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(700, 500));
@@ -116,10 +115,11 @@ public class InicioGUI extends javax.swing.JFrame {
         getContentPane().add(dificilButton);
         dificilButton.setBounds(530, 300, 54, 21);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\usuario\\Documents\\Lenguaje\\fotor-ai-20230525124434.jpg")); // NOI18N
-        jLabel4.setText("jLabel4");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(0, 0, 742, 700);
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/fondo_inicio.jpg"))); // NOI18N
+        jLabel5.setText("jLabel5");
+        jLabel5.setPreferredSize(new java.awt.Dimension(700, 700));
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(0, -4, 700, 500);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -196,7 +196,7 @@ public class InicioGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField jTF_NombreJugador;
     private javax.swing.JRadioButton medioButton;
     // End of variables declaration//GEN-END:variables
