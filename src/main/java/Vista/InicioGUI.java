@@ -59,10 +59,15 @@ public class InicioGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jTF_NombreJugador = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        facilButton = new javax.swing.JRadioButton();
+        medioButton = new javax.swing.JRadioButton();
+        dificilButton = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(700, 500));
@@ -87,23 +92,53 @@ public class InicioGUI extends javax.swing.JFrame {
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, 110, 50));
         getContentPane().add(jTF_NombreJugador, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 200, 250, 30));
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel3.setText("Dificultad");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 190, -1, -1));
+
+        buttonGroup1.add(facilButton);
+        facilButton.setText("Fácil");
+        getContentPane().add(facilButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 240, -1, -1));
+
+        buttonGroup1.add(medioButton);
+        medioButton.setText("Medio");
+        getContentPane().add(medioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 270, -1, -1));
+
+        buttonGroup1.add(dificilButton);
+        dificilButton.setText("Difícil");
+        getContentPane().add(dificilButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 300, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         jActual = new Jugador(this.jTF_NombreJugador.getText());
-        
+        if(facilButton.isSelected()){
+            jActual.setPuntuacion(3000);
+            //Metodo para crear el tablero dependiendo de la dificultad seleccionada
+            crearTablero(1);
+        } else if (medioButton.isSelected()){
+            jActual.setPuntuacion(6000);
+            crearTablero(2);
+        } else {
+            jActual.setPuntuacion(9000);
+            crearTablero(3);
+        }
         
 
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void crearTablero(int dificultad) {
         //pasamos el jugador a la nueva ventana
-        TableroGUI tableroGUI = new TableroGUI(jActual,this);
+        TableroGUI tableroGUI = new TableroGUI(jActual,this, dificultad);
         //ocultamos la ventana actual
         this.setVisible(false);
         //mostramos nueva ventana
         tableroGUI.setVisible(true);
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }
 
     /**
      * @param args the command line arguments
@@ -141,9 +176,14 @@ public class InicioGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JRadioButton dificilButton;
+    private javax.swing.JRadioButton facilButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField jTF_NombreJugador;
+    private javax.swing.JRadioButton medioButton;
     // End of variables declaration//GEN-END:variables
 }
