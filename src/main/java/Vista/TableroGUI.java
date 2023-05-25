@@ -112,6 +112,16 @@ public class TableroGUI extends javax.swing.JFrame {
         jMenuBar1.setMargin(new java.awt.Insets(10, 10, 10, 10));
 
         jMenu1.setText("Reiniciar");
+        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu1MouseClicked(evt);
+            }
+        });
+        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu1ActionPerformed(evt);
+            }
+        });
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Información");
@@ -161,6 +171,42 @@ public class TableroGUI extends javax.swing.JFrame {
        
     }//GEN-LAST:event_jMenu2ActionPerformed
 
+    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+      
+        
+    }//GEN-LAST:event_jMenu1ActionPerformed
+
+    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+        // TODO add your handling code here:
+          // TODO add your handling code here:
+        System.out.println("adsasd");
+        reiniciar();
+    }//GEN-LAST:event_jMenu1MouseClicked
+
+    private void reiniciar(){
+    
+        //reinicio puntuacion de jugador
+        if(jActual.getDificultad().equalsIgnoreCase("facil.")){
+            jActual.setPuntuacion(3000);
+            this.dispose();
+             new TableroGUI(jActual,this.inicioGUI,1).setVisible(true);
+        }
+        else if (jActual.getDificultad().equalsIgnoreCase("media.")){
+        
+             jActual.setPuntuacion(6000);
+             this.dispose();
+                  new TableroGUI(jActual,this.inicioGUI,2).setVisible(true);
+        }
+        
+        else{
+              jActual.setPuntuacion(9000);
+              this.dispose();
+                new TableroGUI(jActual,this.inicioGUI,3).setVisible(true);
+        }
+       
+        
+    
+    }
     private void victoria() {
 
         //guardamos la puntuacion del jugador
