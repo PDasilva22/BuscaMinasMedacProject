@@ -57,10 +57,9 @@ public class TableroGUI extends javax.swing.JFrame {
         this.inicioGUI = inicioGUI;
         this.setResizable(false);
         this.setLocationRelativeTo(null);
-      
+
         jLabelPuntuacion.setText(Integer.toString(jActual.getPuntuacion()));
-        
-        
+
         this.dificultad = dificultad;
         switch (dificultad) {
             case 1:
@@ -76,7 +75,7 @@ public class TableroGUI extends javax.swing.JFrame {
         //Inicializamos el tablero dependiendo de la dificultad seleccionada
         tablero = new confTablero().obtenerTablero(dificultad);
         generarTablero();
-        this.jLabelModoJuego.setText("Dificultad: "+this.jActual.getDificultad());
+        this.jLabelModoJuego.setText("Dificultad: " + this.jActual.getDificultad());
         // this.setSize(600, 700);
     }
 
@@ -125,14 +124,24 @@ public class TableroGUI extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Información");
+        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu2MouseClicked(evt);
+            }
+        });
         jMenu2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu2ActionPerformed(evt);
+                none(evt);
             }
         });
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Puntuación");
+        jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu3MouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
@@ -166,47 +175,54 @@ public class TableroGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
-       //BOTON INFORMACION
-       
-    }//GEN-LAST:event_jMenu2ActionPerformed
+    private void none(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_none
+        //BOTON INFORMACION
+
+    }//GEN-LAST:event_none
 
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
-      
-        
+
+
     }//GEN-LAST:event_jMenu1ActionPerformed
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
         // TODO add your handling code here:
-          // TODO add your handling code here:
+        // TODO add your handling code here:
         System.out.println("adsasd");
         reiniciar();
     }//GEN-LAST:event_jMenu1MouseClicked
 
-    private void reiniciar(){
-    
+    private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
+        //informacion
+        this.setVisible(false);
+        new InformacionGUI().setVisible(true);
+    }//GEN-LAST:event_jMenu2MouseClicked
+
+    private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
+        this.setVisible(false);
+        new PuntuacionGUI().setVisible(true);
+    }//GEN-LAST:event_jMenu3MouseClicked
+
+    private void reiniciar() {
+
         //reinicio puntuacion de jugador
-        if(jActual.getDificultad().equalsIgnoreCase("facil.")){
+        if (jActual.getDificultad().equalsIgnoreCase("facil.")) {
             jActual.setPuntuacion(3000);
             this.dispose();
-             new TableroGUI(jActual,this.inicioGUI,1).setVisible(true);
+            new TableroGUI(jActual, this.inicioGUI, 1).setVisible(true);
+        } else if (jActual.getDificultad().equalsIgnoreCase("media.")) {
+
+            jActual.setPuntuacion(6000);
+            this.dispose();
+            new TableroGUI(jActual, this.inicioGUI, 2).setVisible(true);
+        } else {
+            jActual.setPuntuacion(9000);
+            this.dispose();
+            new TableroGUI(jActual, this.inicioGUI, 3).setVisible(true);
         }
-        else if (jActual.getDificultad().equalsIgnoreCase("media.")){
-        
-             jActual.setPuntuacion(6000);
-             this.dispose();
-                  new TableroGUI(jActual,this.inicioGUI,2).setVisible(true);
-        }
-        
-        else{
-              jActual.setPuntuacion(9000);
-              this.dispose();
-                new TableroGUI(jActual,this.inicioGUI,3).setVisible(true);
-        }
-       
-        
-    
+
     }
+
     private void victoria() {
 
         //guardamos la puntuacion del jugador
@@ -252,14 +268,13 @@ public class TableroGUI extends javax.swing.JFrame {
      */
     private void generarTablero() {
 
-       
         JPanel panel = new JPanel();
-        panel.setBackground(new java.awt.Color(200,200,200));
+        panel.setBackground(new java.awt.Color(200, 200, 200));
         int buttonSize = 50;
         panel.setSize(buttonSize * 8, buttonSize * 8);
 
         //centramos el panel
-        panel.setLocation((this.getWidth() - panel.getWidth()) / 2, (this.getHeight() - panel.getHeight()-jMenuBar1.getHeight()) / 2);
+        panel.setLocation((this.getWidth() - panel.getWidth()) / 2, (this.getHeight() - panel.getHeight() - jMenuBar1.getHeight()) / 2);
         //un grid layout de 8x8 porque son 64 opciones
         panel.setLayout(new GridLayout(8, 8));
 
@@ -354,8 +369,8 @@ public class TableroGUI extends javax.swing.JFrame {
                         } else if (seleccion.equals("tijeras")) {
                             userSeleccion = 3;
                         }
-                        compSeleccion =(int) (Math.random() * 4);
-                        if(userSeleccion == compSeleccion){
+                        compSeleccion = (int) (Math.random() * 4);
+                        if (userSeleccion == compSeleccion) {
                             //Modificar por un panel personalizado de mensaje
                             JOptionPane.showMessageDialog(null, "¡Hemos empatado! Vamos a repetir la partida", "Empate", JOptionPane.ERROR_MESSAGE);
                         }
