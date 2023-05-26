@@ -326,7 +326,7 @@ public class TableroGUI extends javax.swing.JFrame {
                             //ya se ha pulsado este boton
                         }
                     } else {
-                        if (listaBotones.get(index).getText().isEmpty() && tablero.get(index)!=9 || tablero.get(index)!=0) {
+                        if (listaBotones.get(index).getText().isEmpty() && tablero.get(index) != 9 || tablero.get(index) != 0) {
                             boolean valido = true;
                             playGame(valido);
                             //comprobamos que no halla acertado
@@ -339,16 +339,13 @@ public class TableroGUI extends javax.swing.JFrame {
                                     //si no tiene puntos
                                     JOptionPane.showMessageDialog(rootPane, "Has perdido la partida, te has quedado sin oportunidades.", "Derrota", JOptionPane.WARNING_MESSAGE);
                                     gameOver();
-                                } else if (listaBotones.get(index).getText().equalsIgnoreCase("9")) {
-                                    JOptionPane.showMessageDialog(rootPane, "Has perdido la partida, te ha explotado una bomba.", "Derrota", JOptionPane.WARNING_MESSAGE);
-                                    gameOver();
                                 }
-                            } else {
-                                //si se ha encontrado
-
-                                victoria();
-
                             }
+                        } else if (tablero.get(index) == 9) {
+                            JOptionPane.showMessageDialog(rootPane, "Has perdido la partida, te ha explotado una bomba.", "Derrota", JOptionPane.WARNING_MESSAGE);
+                            gameOver();
+                        } else {
+                            victoria();
                         }
                     }
                     listaBotones.get(index).setEnabled(false);
@@ -361,14 +358,14 @@ public class TableroGUI extends javax.swing.JFrame {
                     int compSeleccion;
                     do {
                         Object[] opciones = {"Piedra", "Papel", "Tijeras"};
-                         seleccion = JOptionPane.showOptionDialog(null, "¿Piedra, Papel o Tijeras? \nSolo si ganas te diré a cuánto estoy del jugador", "Opcion", WIDTH, HEIGHT, null, opciones, EXIT_ON_CLOSE);
+                        seleccion = JOptionPane.showOptionDialog(null, "¿Piedra, Papel o Tijeras? \nSolo si ganas te diré a cuánto estoy del jugador", "Opcion", WIDTH, HEIGHT, null, opciones, EXIT_ON_CLOSE);
                         userSeleccion = 0;
-                        if (seleccion == 0) {
-                            userSeleccion = 1;
-                        } else if (seleccion == 1) {
-                            userSeleccion = 2;
-                        } else if (seleccion == 2) {
-                            userSeleccion = 3;
+                        switch (seleccion) {
+                            case 0 -> userSeleccion = 1;
+                            case 1 -> userSeleccion = 2;
+                            case 2 -> userSeleccion = 3;
+                            default -> {
+                            }
                         }
                         compSeleccion = (int) (Math.random() * 4);
                         if (userSeleccion == compSeleccion) {
