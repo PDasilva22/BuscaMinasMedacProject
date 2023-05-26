@@ -51,10 +51,12 @@ public class InformacionGUI extends javax.swing.JFrame {
         jTextArea2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jTextArea2.setForeground(new java.awt.Color(255, 255, 255));
         jTextArea2.setRows(5);
-        jTextArea2.setText("COMO JUGAR:\n\nOBJETIVO: Encontrar al Kiko pulsando los botones\n\nCada vez que un botón es pusado este indicara la distancia al Kiko\n pero ten cuidado solo podrás pulsar 3 Botones.\n\nDebereis de tener cuidado pues hay bombas distribuidas por el tablero\n si pulsais en una de ella perdereis directamente.\n\nDificultades: Existen tres dificultades.\n\n             \t-Facil: 1 Bomba, 3 Intentos.\n             \t-Intermedio: 3 Bombas, 3 Intentos.\n             \t-Kiko: 3 Bombas, 3 Intentos y deberas de ganar a piedra papel o tijera\n\t para revelar el boton.\n\nCada dificultad comienza con una puntuacion superior a la anterior\n asi que buena suerte con las dificultades superiores!!!!\n");
+        jTextArea2.setText("COMO JUGAR:\n\nOBJETIVO: Encontrar al Kiko pulsando los botones\n\nPara desbloquear el mapa de botones deberás pasar el cursor e ir desbloqueando\nlas distintas casillas de las que dispones.\n\nCada vez que un botón es pusado este indicara la distancia al Kiko\n pero ten cuidado solo podrás pulsar 3 Botones.\n\nDebereis de tener cuidado pues hay bombas distribuidas por el tablero\n si pulsais en una de ella perdereis directamente.\n\nDificultades: Existen tres dificultades.\n\n             \t-Facil: 1 Bomba, 3 Intentos.\n             \t-Intermedio: 3 Bombas, 3 Intentos.\n             \t-Kiko: 3 Bombas, 3 Intentos y deberas de ganar a piedra papel o tijera\n\t para revelar el boton.\n\nCada dificultad comienza con una puntuacion superior a la anterior\n asi que buena suerte con las dificultades superiores!!!!\n");
         jScrollPane2.setViewportView(jTextArea2);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 700, 450));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 700, 530));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\usuario\\Documents\\NetBeansProjects\\BuscaMinasMedacProject\\src\\main\\java\\Vista\\fondoInformacion.jpg")); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

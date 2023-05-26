@@ -42,7 +42,7 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="10" y="120" width="700" height="450"/>
+              <AbsoluteConstraints x="10" y="120" width="700" height="530"/>
             </Constraint>
           </Constraints>
 
@@ -58,12 +58,17 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="rows" type="int" value="5"/>
-                <Property name="text" type="java.lang.String" value="COMO JUGAR:&#xa;&#xa;OBJETIVO: Encontrar al Kiko pulsando los botones&#xa;&#xa;Cada vez que un bot&#xf3;n es pusado este indicara la distancia al Kiko&#xa; pero ten cuidado solo podr&#xe1;s pulsar 3 Botones.&#xa;&#xa;Debereis de tener cuidado pues hay bombas distribuidas por el tablero&#xa; si pulsais en una de ella perdereis directamente.&#xa;&#xa;Dificultades: Existen tres dificultades.&#xa;&#xa;             &#x9;-Facil: 1 Bomba, 3 Intentos.&#xa;             &#x9;-Intermedio: 3 Bombas, 3 Intentos.&#xa;             &#x9;-Kiko: 3 Bombas, 3 Intentos y deberas de ganar a piedra papel o tijera&#xa;&#x9; para revelar el boton.&#xa;&#xa;Cada dificultad comienza con una puntuacion superior a la anterior&#xa; asi que buena suerte con las dificultades superiores!!!!&#xa;"/>
+                <Property name="text" type="java.lang.String" value="COMO JUGAR:&#xa;&#xa;OBJETIVO: Encontrar al Kiko pulsando los botones&#xa;&#xa;Para desbloquear el mapa de botones deber&#xe1;s pasar el cursor e ir desbloqueando&#xa;las distintas casillas de las que dispones.&#xa;&#xa;Cada vez que un bot&#xf3;n es pusado este indicara la distancia al Kiko&#xa; pero ten cuidado solo podr&#xe1;s pulsar 3 Botones.&#xa;&#xa;Debereis de tener cuidado pues hay bombas distribuidas por el tablero&#xa; si pulsais en una de ella perdereis directamente.&#xa;&#xa;Dificultades: Existen tres dificultades.&#xa;&#xa;             &#x9;-Facil: 1 Bomba, 3 Intentos.&#xa;             &#x9;-Intermedio: 3 Bombas, 3 Intentos.&#xa;             &#x9;-Kiko: 3 Bombas, 3 Intentos y deberas de ganar a piedra papel o tijera&#xa;&#x9; para revelar el boton.&#xa;&#xa;Cada dificultad comienza con una puntuacion superior a la anterior&#xa; asi que buena suerte con las dificultades superiores!!!!&#xa;"/>
               </Properties>
             </Component>
           </SubComponents>
         </Container>
         <Component class="javax.swing.JLabel" name="jLabel1">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="2" name="C:\Users\usuario\Documents\NetBeansProjects\BuscaMinasMedacProject\src\main\java\Vista\fondoInformacion.jpg"/>
+            </Property>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="0" y="0" width="-1" height="-1"/>

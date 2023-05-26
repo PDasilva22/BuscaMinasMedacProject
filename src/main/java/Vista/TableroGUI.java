@@ -27,6 +27,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
+import org.netbeans.lib.awtextra.AbsoluteLayout;
 
 /**
  *
@@ -80,6 +81,7 @@ public class TableroGUI extends javax.swing.JFrame {
         tablero = new confTablero().obtenerTablero(dificultad);
         generarTablero();
         this.jLabelModoJuego.setText("Dificultad: " + this.jActual.getDificultad());
+
         // this.setSize(600, 700);
     }
 
@@ -95,6 +97,7 @@ public class TableroGUI extends javax.swing.JFrame {
         jLabelModoJuego = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabelPuntuacion = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -105,15 +108,21 @@ public class TableroGUI extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(700, 500));
 
         jLabelModoJuego.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabelModoJuego.setForeground(new java.awt.Color(255, 255, 255));
         jLabelModoJuego.setText("Dificultad: ");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("PUNTUACION");
 
         jLabelPuntuacion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabelPuntuacion.setForeground(new java.awt.Color(255, 255, 255));
         jLabelPuntuacion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelPuntuacion.setText("00000");
+
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\usuario\\Documents\\NetBeansProjects\\BuscaMinasMedacProject\\src\\main\\java\\Vista\\fondo juego.jpg")); // NOI18N
+        jLabel2.setText("jLabel2");
 
         jMenuBar1.setMargin(new java.awt.Insets(10, 10, 10, 10));
 
@@ -157,26 +166,29 @@ public class TableroGUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(221, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelPuntuacion, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(118, 118, 118)
-                        .addComponent(jLabelModoJuego, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(14, 14, 14))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(541, 541, 541)
+                .addComponent(jLabelModoJuego, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(221, 221, 221)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(221, 221, 221)
+                .addComponent(jLabelPuntuacion, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelModoJuego, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelPuntuacion)
-                .addContainerGap(423, Short.MAX_VALUE))
+                .addGap(6, 6, 6)
+                .addComponent(jLabelModoJuego, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addComponent(jLabel1))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(jLabelPuntuacion))
+            .addComponent(jLabel2)
         );
 
         pack();
@@ -263,8 +275,7 @@ public class TableroGUI extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(TableroGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-         
-       
+
         this.inicioGUI.setVisible(true);
 
     }
@@ -285,6 +296,7 @@ public class TableroGUI extends javax.swing.JFrame {
         panel.setLayout(new GridLayout(8, 8));
 
         this.add(panel);
+
 
         for (int i = 0; i < 64; i++) {
             JButton button = new JButton("");
@@ -318,11 +330,15 @@ public class TableroGUI extends javax.swing.JFrame {
                                     JOptionPane.showMessageDialog(rootPane, "Has perdido la partida, te has quedado sin oportunidades.", "Derrota", JOptionPane.WARNING_MESSAGE);
                                     gameOver();
                                 } else if (listaBotones.get(index).getText().equalsIgnoreCase("9")) {
+                                    listaBotones.get(index).setIcon(new javax.swing.ImageIcon("C:\\Users\\usuario\\Documents\\NetBeansProjects\\BuscaMinasMedacProject\\src\\main\\java\\Vista\\explotar.png"));
+                                    listaBotones.get(index).setText("");
                                     JOptionPane.showMessageDialog(rootPane, "Has perdido la partida, te ha explotado una bomba.", "Derrota", JOptionPane.WARNING_MESSAGE);
                                     gameOver();
                                 }
                             } else {
                                 //si se ha encontrado
+                                listaBotones.get(index).setIcon(new javax.swing.ImageIcon("C:\\Users\\usuario\\Documents\\NetBeansProjects\\BuscaMinasMedacProject\\src\\main\\java\\Vista\\ganar.png"));
+                                listaBotones.get(index).setText("");
                                 victoria();
                             }
 
@@ -330,11 +346,20 @@ public class TableroGUI extends javax.swing.JFrame {
                             //ya se ha pulsado este boton
                         }
                     } else {
-                        if (listaBotones.get(index).getText().isEmpty() && tablero.get(index) != 9 || tablero.get(index) != 0) {
+                        if (listaBotones.get(index).getText().isEmpty()) {
                             boolean valido = true;
-                            playGame(valido);
                             //comprobamos que no halla acertado
-                            if (!listaBotones.get(index).getText().equalsIgnoreCase("0")) {
+                            if (tablero.get(index).toString().equalsIgnoreCase("0")) {
+                                listaBotones.get(index).setIcon(new javax.swing.ImageIcon("C:\\Users\\usuario\\Documents\\NetBeansProjects\\BuscaMinasMedacProject\\src\\main\\java\\Vista\\ganar.png"));
+                                listaBotones.get(index).setText("");
+                                victoria();
+                            } else if (tablero.get(index).toString().equalsIgnoreCase("9")) {
+                                listaBotones.get(index).setIcon(new javax.swing.ImageIcon("C:\\Users\\usuario\\Documents\\NetBeansProjects\\BuscaMinasMedacProject\\src\\main\\java\\Vista\\explotar.png"));
+                                listaBotones.get(index).setText("");
+                                JOptionPane.showMessageDialog(rootPane, "Has perdido la partida, te ha explotado una bomba.", "Derrota", JOptionPane.WARNING_MESSAGE);
+                                gameOver();
+                            } else {
+                                playGame(valido);
                                 jActual.setPuntuacion(jActual.getPuntuacion() - resto);
                                 jLabelPuntuacion.setText(Integer.toString(jActual.getPuntuacion()));
                                 //comprobamos que no se halla quedado sin puntos
@@ -345,11 +370,7 @@ public class TableroGUI extends javax.swing.JFrame {
                                     gameOver();
                                 }
                             }
-                        } else if (listaBotones.get(index).getText().equalsIgnoreCase("9")) {
-                            JOptionPane.showMessageDialog(rootPane, "Has perdido la partida, te ha explotado una bomba.", "Derrota", JOptionPane.WARNING_MESSAGE);
-                            gameOver();
-                        } else {
-                            victoria();
+
                         }
                     }
                     listaBotones.get(index).setEnabled(false);
@@ -363,7 +384,7 @@ public class TableroGUI extends javax.swing.JFrame {
                     do {
                         Object[] opciones = {"Piedra", "Papel", "Tijeras"};
                         String r_icono1 = "C:\\Users\\usuario\\Documents\\NetBeansProjects\\BuscaMinasMedacProject\\src\\main\\java\\Vista\\transito.png";
-                            ImageIcon icono1 = new ImageIcon(r_icono1);
+                        ImageIcon icono1 = new ImageIcon(r_icono1);
                         seleccion = JOptionPane.showOptionDialog(null, "STOP!!! Te ha parado la guardia civil \n Solo avanzas si ganas en piedra, papel  o tijeras", "Opcion", WIDTH, HEIGHT, icono1, opciones, EXIT_ON_CLOSE);
                         userSeleccion = 0;
                         switch (seleccion) {
@@ -381,20 +402,20 @@ public class TableroGUI extends javax.swing.JFrame {
                             String r_icono2 = "C:\\Users\\usuario\\Documents\\NetBeansProjects\\BuscaMinasMedacProject\\src\\main\\java\\Vista\\pelea.png";
                             ImageIcon icono2 = new ImageIcon(r_icono2);
                             //Modificar por un panel personalizado de mensaje
-                            JOptionPane.showMessageDialog(null, "¡Hemos empatado! Vamos a repetir la partida", "Empate", JOptionPane.ERROR_MESSAGE,icono2);
+                            JOptionPane.showMessageDialog(null, "¡Hemos empatado! Vamos a repetir la partida", "Empate", JOptionPane.ERROR_MESSAGE, icono2);
                         }
                     } while (userSeleccion == compSeleccion);
                     if (comprobarResultado(userSeleccion, compSeleccion)) {
-                              String r_icono = "C:\\Users\\usuario\\Documents\\NetBeansProjects\\BuscaMinasMedacProject\\src\\main\\java\\Vista\\seguro.png";
-                            ImageIcon icono = new ImageIcon(r_icono);
-                            //Modificar por un panel personalizado de mensaje
-                            JOptionPane.showMessageDialog(null, "¡Has ganado la partida! Lo paga todo el seguro", "Victoria",  JOptionPane.INFORMATION_MESSAGE, icono);
+                        String r_icono = "C:\\Users\\usuario\\Documents\\NetBeansProjects\\BuscaMinasMedacProject\\src\\main\\java\\Vista\\seguro.png";
+                        ImageIcon icono = new ImageIcon(r_icono);
+                        //Modificar por un panel personalizado de mensaje
+                        JOptionPane.showMessageDialog(null, "¡Has ganado la partida! Lo paga todo el seguro", "Victoria", JOptionPane.INFORMATION_MESSAGE, icono);
                         listaBotones.get(index).setText(tablero.get(index).toString());
                     } else {
-                               String r_icono = "C:\\Users\\usuario\\Documents\\NetBeansProjects\\BuscaMinasMedacProject\\src\\main\\java\\Vista\\atropello.png";
-                            ImageIcon icono = new ImageIcon(r_icono);
+                        String r_icono = "C:\\Users\\usuario\\Documents\\NetBeansProjects\\BuscaMinasMedacProject\\src\\main\\java\\Vista\\atropello.png";
+                        ImageIcon icono = new ImageIcon(r_icono);
                         //Editar por un panel personalizado
-                        JOptionPane.showMessageDialog(null, "Has perdido la partida, has atropellado al Guardia Civil", "Derrota", JOptionPane.INFORMATION_MESSAGE,icono);
+                        JOptionPane.showMessageDialog(null, "Has perdido la partida, has atropellado al Guardia Civil", "Derrota", JOptionPane.INFORMATION_MESSAGE, icono);
                     }
                 }
 
@@ -455,6 +476,7 @@ public class TableroGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelModoJuego;
     private javax.swing.JLabel jLabelPuntuacion;
     private javax.swing.JMenu jMenu1;
