@@ -15,6 +15,8 @@ import java.awt.GridLayout;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import static java.awt.image.ImageObserver.HEIGHT;
+import static java.awt.image.ImageObserver.WIDTH;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -23,6 +25,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 /**
  *
@@ -257,7 +260,6 @@ public class TableroGUI extends javax.swing.JFrame {
             Logger.getLogger(TableroGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        JOptionPane.showMessageDialog(rootPane, "Has perdido la partida");
         this.dispose();
         this.inicioGUI.setVisible(true);
 
@@ -309,13 +311,15 @@ public class TableroGUI extends javax.swing.JFrame {
                                 //comprueba si tiene menos puntos que los que cuesta tirar una vez
                                 if (jActual.getPuntuacion() < resto) {
                                     //si no tiene puntos
+                                    JOptionPane.showMessageDialog(rootPane, "Has perdido la partida, te has quedado sin oportunidades.", "Derrota", JOptionPane.WARNING_MESSAGE);
+                                    gameOver();
+                                } else if (listaBotones.get(index).getText().equalsIgnoreCase("9")) {
+                                    JOptionPane.showMessageDialog(rootPane, "Has perdido la partida, te ha explotado una bomba.", "Derrota", JOptionPane.WARNING_MESSAGE);
                                     gameOver();
                                 }
                             } else {
                                 //si se ha encontrado
-
                                 victoria();
-
                             }
 
                         } else {
@@ -333,6 +337,10 @@ public class TableroGUI extends javax.swing.JFrame {
                                 //comprueba si tiene menos puntos que los que cuesta tirar una vez
                                 if (jActual.getPuntuacion() < resto) {
                                     //si no tiene puntos
+                                    JOptionPane.showMessageDialog(rootPane, "Has perdido la partida, te has quedado sin oportunidades.", "Derrota", JOptionPane.WARNING_MESSAGE);
+                                    gameOver();
+                                } else if (listaBotones.get(index).getText().equalsIgnoreCase("9")) {
+                                    JOptionPane.showMessageDialog(rootPane, "Has perdido la partida, te ha explotado una bomba.", "Derrota", JOptionPane.WARNING_MESSAGE);
                                     gameOver();
                                 }
                             } else {
@@ -348,26 +356,18 @@ public class TableroGUI extends javax.swing.JFrame {
                 }
 
                 private void playGame(boolean valido) throws HeadlessException {
-                    String seleccion;
+                    int seleccion;
                     int userSeleccion;
                     int compSeleccion;
                     do {
-                        do {
-                            seleccion = JOptionPane.showInputDialog("¿Piedra, Papel o Tijeras? \nSolo si ganas te diré a cuánto estoy del jugador");
-                            seleccion.toLowerCase();
-                            System.out.println(seleccion);
-                            valido = true;
-                            if (!seleccion.equals("piedra") && !seleccion.equals("tijeras") && !seleccion.equals("papel")) {
-                                JOptionPane.showMessageDialog(null, "Esa opción no existe", "Incorrecto", JOptionPane.ERROR_MESSAGE);
-                                valido = false;
-                            }
-                        } while (!valido);
+                        Object[] opciones = {"Piedra", "Papel", "Tijeras"};
+                         seleccion = JOptionPane.showOptionDialog(null, "¿Piedra, Papel o Tijeras? \nSolo si ganas te diré a cuánto estoy del jugador", "Opcion", WIDTH, HEIGHT, null, opciones, EXIT_ON_CLOSE);
                         userSeleccion = 0;
-                        if (seleccion.equals("piedra")) {
+                        if (seleccion == 0) {
                             userSeleccion = 1;
-                        } else if (seleccion.equals("papel")) {
+                        } else if (seleccion == 1) {
                             userSeleccion = 2;
-                        } else if (seleccion.equals("tijeras")) {
+                        } else if (seleccion == 2) {
                             userSeleccion = 3;
                         }
                         compSeleccion = (int) (Math.random() * 4);
