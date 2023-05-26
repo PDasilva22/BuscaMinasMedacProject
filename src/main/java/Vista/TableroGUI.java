@@ -326,7 +326,7 @@ public class TableroGUI extends javax.swing.JFrame {
                             //ya se ha pulsado este boton
                         }
                     } else {
-                        if (listaBotones.get(index).getText().isEmpty()) {
+                        if (listaBotones.get(index).getText().isEmpty() && tablero.get(index)!=9 || tablero.get(index)!=0) {
                             boolean valido = true;
                             playGame(valido);
                             //comprobamos que no halla acertado
