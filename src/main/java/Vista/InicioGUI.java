@@ -6,6 +6,7 @@ package Vista;
 
 import Controlador.ConexionMySQL;
 import Controlador.ControladorJugadores;
+import Vista.InformacionGUI;
 import Modelo.Jugador;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -67,6 +68,9 @@ public class InicioGUI extends javax.swing.JFrame {
         facilButton = new javax.swing.JRadioButton();
         medioButton = new javax.swing.JRadioButton();
         dificilButton = new javax.swing.JRadioButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(700, 500));
@@ -103,17 +107,35 @@ public class InicioGUI extends javax.swing.JFrame {
         buttonGroup1.add(facilButton);
         facilButton.setText("Fácil");
         getContentPane().add(facilButton);
-        facilButton.setBounds(530, 240, 60, 21);
+        facilButton.setBounds(530, 240, 60, 20);
 
         buttonGroup1.add(medioButton);
         medioButton.setText("Medio");
         getContentPane().add(medioButton);
-        medioButton.setBounds(530, 270, 57, 21);
+        medioButton.setBounds(530, 270, 57, 20);
 
         buttonGroup1.add(dificilButton);
         dificilButton.setText("Difícil");
         getContentPane().add(dificilButton);
-        dificilButton.setBounds(530, 300, 54, 21);
+        dificilButton.setBounds(530, 300, 54, 20);
+
+        jMenu1.setText("Información");
+        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu1MouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Resultados");
+        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu2MouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -141,6 +163,16 @@ public class InicioGUI extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+        InformacionGUI informacionGUI = new InformacionGUI();
+        informacionGUI.setVisible(true);
+    }//GEN-LAST:event_jMenu1MouseClicked
+
+    private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
+        PuntuacionGUI puntuacionGUI = new PuntuacionGUI();
+        puntuacionGUI.setVisible(true);
+    }//GEN-LAST:event_jMenu2MouseClicked
 
     private void crearTablero(int dificultad) {
         //pasamos el jugador a la nueva ventana
@@ -195,6 +227,9 @@ public class InicioGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JTextField jTF_NombreJugador;
     private javax.swing.JRadioButton medioButton;
     // End of variables declaration//GEN-END:variables

@@ -250,18 +250,18 @@ public class TableroGUI extends javax.swing.JFrame {
     private void gameOver() {
 
         //guardamos la puntuacion del jugador
-        /*    ConexionMySQL conexion = new ConexionMySQL("root", " ", "buscaminas");
+        ConexionMySQL conexion = new ConexionMySQL("root", " ", "buscaminas");
         ControladorJugadores controlador = new ControladorJugadores(conexion);
         try {
             conexion.conectar();
-         //   controlador.insertarJugador(jActual);
+            controlador.insertarJugador(jActual);
         } catch (SQLException ex) {
             Logger.getLogger(TableroGUI.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(TableroGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-         */
-        this.dispose();
+         
+       
         this.inicioGUI.setVisible(true);
 
     }
@@ -333,7 +333,7 @@ public class TableroGUI extends javax.swing.JFrame {
                             //comprobamos que no halla acertado
                             if (!listaBotones.get(index).getText().equalsIgnoreCase("0")) {
                                 jActual.setPuntuacion(jActual.getPuntuacion() - resto);
-
+                                jLabelPuntuacion.setText(Integer.toString(jActual.getPuntuacion()));
                                 //comprobamos que no se halla quedado sin puntos
                                 //comprueba si tiene menos puntos que los que cuesta tirar una vez
                                 if (jActual.getPuntuacion() < resto) {
@@ -342,7 +342,7 @@ public class TableroGUI extends javax.swing.JFrame {
                                     gameOver();
                                 }
                             }
-                        } else if (tablero.get(index) == 9) {
+                        } else if (listaBotones.get(index).getText().equalsIgnoreCase("9")) {
                             JOptionPane.showMessageDialog(rootPane, "Has perdido la partida, te ha explotado una bomba.", "Derrota", JOptionPane.WARNING_MESSAGE);
                             gameOver();
                         } else {

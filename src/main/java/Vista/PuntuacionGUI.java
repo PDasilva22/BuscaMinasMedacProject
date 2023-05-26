@@ -42,12 +42,11 @@ public class PuntuacionGUI extends javax.swing.JFrame {
            
           
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-            //model.setRowCount(0);
+            model.setRowCount(lista.size());
            
             int fila = 0, columna = 0;
             if (!lista.isEmpty()) {
                 for (Jugador jugador : lista) {
-                    model.setRowCount(model.getRowCount()+1);
                     model.setValueAt(jugador.getNombre(), fila, columna);
                     model.setValueAt(jugador.getPuntuacion(), fila, columna + 1);
                     model.setValueAt(jugador.getFecha(),fila,columna+2);
