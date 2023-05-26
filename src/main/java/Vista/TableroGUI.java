@@ -104,11 +104,14 @@ public class TableroGUI extends javax.swing.JFrame {
         setResizable(false);
         setSize(new java.awt.Dimension(700, 500));
 
+        jLabelModoJuego.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabelModoJuego.setText("Dificultad: ");
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("PUNTUACION");
 
+        jLabelPuntuacion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabelPuntuacion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelPuntuacion.setText("00000");
 

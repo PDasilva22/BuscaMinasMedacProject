@@ -7,6 +7,7 @@ package Vista;
 import Controlador.ConexionMySQL;
 import Controlador.ControladorJugadores;
 import Modelo.Jugador;
+import java.awt.Color;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -31,6 +32,10 @@ public class InicioGUI extends javax.swing.JFrame {
         this.setResizable(false);
         this.setLocationRelativeTo(null);
        this.setSize(450, 500);
+       facilButton.setForeground(Color.white);
+       medioButton.setForeground(Color.white);
+       dificilButton.setForeground(Color.white);
+       jLabel3.setForeground(Color.white);
 
        /*  conexion=new ConexionMySQL("root"," ","buscaminas");
            controlador=new ControladorJugadores(conexion);
@@ -67,6 +72,8 @@ public class InicioGUI extends javax.swing.JFrame {
         facilButton = new javax.swing.JRadioButton();
         medioButton = new javax.swing.JRadioButton();
         dificilButton = new javax.swing.JRadioButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(700, 500));
@@ -75,13 +82,14 @@ public class InicioGUI extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Nombre del Equipo:");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(30, 200, 220, 30);
+        jLabel1.setBounds(40, 200, 220, 30);
 
         jLabel2.setFont(new java.awt.Font("Segoe Print", 1, 48)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\usuario\\Documents\\NetBeansProjects\\BuscaMinasMedacProject\\src\\main\\java\\Vista\\kiko.png")); // NOI18N
         jLabel2.setText("BUSCA KIKOS");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(20, 10, 660, 150);
+        jLabel2.setBounds(10, 0, 660, 150);
 
         jButton1.setText("Jugar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -94,7 +102,7 @@ public class InicioGUI extends javax.swing.JFrame {
         getContentPane().add(jTF_NombreJugador);
         jTF_NombreJugador.setBounds(260, 200, 220, 30);
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Dificultad");
         getContentPane().add(jLabel3);
@@ -103,17 +111,31 @@ public class InicioGUI extends javax.swing.JFrame {
         buttonGroup1.add(facilButton);
         facilButton.setText("Fácil");
         getContentPane().add(facilButton);
-        facilButton.setBounds(530, 240, 60, 21);
+        facilButton.setBounds(540, 240, 60, 21);
 
         buttonGroup1.add(medioButton);
         medioButton.setText("Medio");
         getContentPane().add(medioButton);
-        medioButton.setBounds(530, 270, 57, 21);
+        medioButton.setBounds(540, 270, 57, 21);
 
         buttonGroup1.add(dificilButton);
         dificilButton.setText("Difícil");
         getContentPane().add(dificilButton);
-        dificilButton.setBounds(530, 300, 54, 21);
+        dificilButton.setBounds(540, 300, 53, 21);
+
+        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\usuario\\Documents\\NetBeansProjects\\BuscaMinasMedacProject\\src\\main\\java\\Vista\\informacion.png")); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2);
+        jButton2.setBounds(80, 330, 40, 39);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\usuario\\Documents\\NetBeansProjects\\BuscaMinasMedacProject\\src\\main\\java\\Vista\\fondo_inicio.jpg")); // NOI18N
+        jLabel4.setText("jLabel4");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(0, 0, 700, 540);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -141,6 +163,13 @@ public class InicioGUI extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        InformacionGUI info =new InformacionGUI();
+        this.setVisible(false);
+        info.setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void crearTablero(int dificultad) {
         //pasamos el jugador a la nueva ventana
@@ -192,9 +221,11 @@ public class InicioGUI extends javax.swing.JFrame {
     private javax.swing.JRadioButton dificilButton;
     private javax.swing.JRadioButton facilButton;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField jTF_NombreJugador;
     private javax.swing.JRadioButton medioButton;
     // End of variables declaration//GEN-END:variables
