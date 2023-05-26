@@ -4,6 +4,10 @@
  */
 package Vista;
 
+import java.awt.Color;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+
 /**
  *
  * @author Medac
@@ -15,7 +19,16 @@ public class InformacionGUI extends javax.swing.JFrame {
      */
     public InformacionGUI() {
         initComponents();
-                this.setLocationRelativeTo(null); //Centrar app
+        jScrollPane2.setOpaque(false);
+        jScrollPane2.getViewport().setOpaque(false);
+        jScrollPane2.setBorder(null);
+        jScrollPane2.setViewportBorder(null);
+
+        jTextArea2.setBorder(null);
+        jTextArea2.setBackground(new Color(0, 0, 0, 64));
+        jTextArea2.setEditable(false);
+        this.setLocationRelativeTo(null); //Centrar app
+
     }
 
     /**
@@ -28,19 +41,25 @@ public class InformacionGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 720, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 720, Short.MAX_VALUE)
-        );
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTextArea2.setColumns(20);
+        jTextArea2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jTextArea2.setForeground(new java.awt.Color(255, 255, 255));
+        jTextArea2.setRows(5);
+        jTextArea2.setText("COMO JUGAR:\n\nOBJETIVO: Encontrar al Kiko pulsando los botones\n\nCada vez que un botón es pusado este indicara la distancia al Kiko\n pero ten cuidado solo podrás pulsar 3 Botones.\n\nDebereis de tener cuidado pues hay bombas distribuidas por el tablero\n si pulsais en una de ella perdereis directamente.\n\nDificultades: Existen tres dificultades.\n\n             \t-Facil: 1 Bomba, 3 Intentos.\n             \t-Intermedio: 3 Bombas, 3 Intentos.\n             \t-Kiko: 3 Bombas, 3 Intentos y deberas de ganar a piedra papel o tijera\n\t para revelar el boton.\n\nCada dificultad comienza con una puntuacion superior a la anterior\n asi que buena suerte con las dificultades superiores!!!!\n");
+        jScrollPane2.setViewportView(jTextArea2);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 700, 450));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\MEDAC\\Documents\\NetBeansProjects\\BuscaMinasMedacProject\\src\\main\\java\\Vista\\fondoInformacion.jpg")); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -92,6 +111,9 @@ public class InformacionGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTextArea2;
     // End of variables declaration//GEN-END:variables
 }
