@@ -21,6 +21,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -249,7 +250,7 @@ public class TableroGUI extends javax.swing.JFrame {
     private void gameOver() {
 
         //guardamos la puntuacion del jugador
-    /*    ConexionMySQL conexion = new ConexionMySQL("root", " ", "buscaminas");
+        /*    ConexionMySQL conexion = new ConexionMySQL("root", " ", "buscaminas");
         ControladorJugadores controlador = new ControladorJugadores(conexion);
         try {
             conexion.conectar();
@@ -259,7 +260,7 @@ public class TableroGUI extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(TableroGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-*/
+         */
         this.dispose();
         this.inicioGUI.setVisible(true);
 
@@ -358,26 +359,39 @@ public class TableroGUI extends javax.swing.JFrame {
                     int compSeleccion;
                     do {
                         Object[] opciones = {"Piedra", "Papel", "Tijeras"};
-                        seleccion = JOptionPane.showOptionDialog(null, "¿Piedra, Papel o Tijeras? \nSolo si ganas te diré a cuánto estoy del jugador", "Opcion", WIDTH, HEIGHT, null, opciones, EXIT_ON_CLOSE);
+                        String r_icono1 = "C:\\Users\\usuario\\Documents\\NetBeansProjects\\BuscaMinasMedacProject\\src\\main\\java\\Vista\\transito.png";
+                            ImageIcon icono1 = new ImageIcon(r_icono1);
+                        seleccion = JOptionPane.showOptionDialog(null, "STOP!!! Te ha parado la guardia civil \n Solo avanzas si ganas en piedra, papel  o tijeras", "Opcion", WIDTH, HEIGHT, icono1, opciones, EXIT_ON_CLOSE);
                         userSeleccion = 0;
                         switch (seleccion) {
-                            case 0 -> userSeleccion = 1;
-                            case 1 -> userSeleccion = 2;
-                            case 2 -> userSeleccion = 3;
+                            case 0 ->
+                                userSeleccion = 1;
+                            case 1 ->
+                                userSeleccion = 2;
+                            case 2 ->
+                                userSeleccion = 3;
                             default -> {
                             }
                         }
                         compSeleccion = (int) (Math.random() * 4);
                         if (userSeleccion == compSeleccion) {
+                            String r_icono2 = "C:\\Users\\usuario\\Documents\\NetBeansProjects\\BuscaMinasMedacProject\\src\\main\\java\\Vista\\pelea.png";
+                            ImageIcon icono2 = new ImageIcon(r_icono2);
                             //Modificar por un panel personalizado de mensaje
-                            JOptionPane.showMessageDialog(null, "¡Hemos empatado! Vamos a repetir la partida", "Empate", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "¡Hemos empatado! Vamos a repetir la partida", "Empate", JOptionPane.ERROR_MESSAGE,icono2);
                         }
                     } while (userSeleccion == compSeleccion);
                     if (comprobarResultado(userSeleccion, compSeleccion)) {
+                              String r_icono = "C:\\Users\\usuario\\Documents\\NetBeansProjects\\BuscaMinasMedacProject\\src\\main\\java\\Vista\\seguro.png";
+                            ImageIcon icono = new ImageIcon(r_icono);
+                            //Modificar por un panel personalizado de mensaje
+                            JOptionPane.showMessageDialog(null, "¡Has ganado la partida! Lo paga todo el seguro", "Victoria",  JOptionPane.INFORMATION_MESSAGE, icono);
                         listaBotones.get(index).setText(tablero.get(index).toString());
                     } else {
+                               String r_icono = "C:\\Users\\usuario\\Documents\\NetBeansProjects\\BuscaMinasMedacProject\\src\\main\\java\\Vista\\atropello.png";
+                            ImageIcon icono = new ImageIcon(r_icono);
                         //Editar por un panel personalizado
-                        JOptionPane.showMessageDialog(null, "Has perdido la partida", "Derrota", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Has perdido la partida, has atropellado al Guardia Civil", "Derrota", JOptionPane.INFORMATION_MESSAGE,icono);
                     }
                 }
 
