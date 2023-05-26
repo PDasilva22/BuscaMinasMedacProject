@@ -6,7 +6,6 @@ package Vista;
 
 import Controlador.ConexionMySQL;
 import Controlador.ControladorJugadores;
-import Vista.InformacionGUI;
 import Modelo.Jugador;
 import java.awt.Color;
 import java.sql.SQLException;
@@ -73,14 +72,8 @@ public class InicioGUI extends javax.swing.JFrame {
         facilButton = new javax.swing.JRadioButton();
         medioButton = new javax.swing.JRadioButton();
         dificilButton = new javax.swing.JRadioButton();
-<<<<<<< HEAD
         jButton2 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-=======
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
->>>>>>> 5c892c0759e86fa72c5252fa2ea7474ccb1cfa44
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(700, 500));
@@ -118,25 +111,16 @@ public class InicioGUI extends javax.swing.JFrame {
         buttonGroup1.add(facilButton);
         facilButton.setText("Fácil");
         getContentPane().add(facilButton);
-<<<<<<< HEAD
         facilButton.setBounds(540, 240, 60, 21);
-=======
-        facilButton.setBounds(530, 240, 60, 20);
->>>>>>> 5c892c0759e86fa72c5252fa2ea7474ccb1cfa44
 
         buttonGroup1.add(medioButton);
         medioButton.setText("Medio");
         getContentPane().add(medioButton);
-<<<<<<< HEAD
         medioButton.setBounds(540, 270, 57, 21);
-=======
-        medioButton.setBounds(530, 270, 57, 20);
->>>>>>> 5c892c0759e86fa72c5252fa2ea7474ccb1cfa44
 
         buttonGroup1.add(dificilButton);
         dificilButton.setText("Difícil");
         getContentPane().add(dificilButton);
-<<<<<<< HEAD
         dificilButton.setBounds(540, 300, 53, 21);
 
         jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\usuario\\Documents\\NetBeansProjects\\BuscaMinasMedacProject\\src\\main\\java\\Vista\\informacion.png")); // NOI18N
@@ -146,33 +130,12 @@ public class InicioGUI extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(80, 330, 40, 39);
+        jButton2.setBounds(70, 330, 40, 39);
 
         jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\usuario\\Documents\\NetBeansProjects\\BuscaMinasMedacProject\\src\\main\\java\\Vista\\fondo_inicio.jpg")); // NOI18N
         jLabel4.setText("jLabel4");
         getContentPane().add(jLabel4);
         jLabel4.setBounds(0, 0, 700, 540);
-=======
-        dificilButton.setBounds(530, 300, 54, 20);
-
-        jMenu1.setText("Información");
-        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu1MouseClicked(evt);
-            }
-        });
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Resultados");
-        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu2MouseClicked(evt);
-            }
-        });
-        jMenuBar1.add(jMenu2);
-
-        setJMenuBar(jMenuBar1);
->>>>>>> 5c892c0759e86fa72c5252fa2ea7474ccb1cfa44
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -201,24 +164,12 @@ public class InicioGUI extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
-<<<<<<< HEAD
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         InformacionGUI info =new InformacionGUI();
         this.setVisible(false);
         info.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
-=======
-    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
-        InformacionGUI informacionGUI = new InformacionGUI();
-        informacionGUI.setVisible(true);
-    }//GEN-LAST:event_jMenu1MouseClicked
-
-    private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
-        PuntuacionGUI puntuacionGUI = new PuntuacionGUI();
-        puntuacionGUI.setVisible(true);
-    }//GEN-LAST:event_jMenu2MouseClicked
->>>>>>> 5c892c0759e86fa72c5252fa2ea7474ccb1cfa44
 
     private void crearTablero(int dificultad) {
         //pasamos el jugador a la nueva ventana
@@ -274,13 +225,7 @@ public class InicioGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-<<<<<<< HEAD
     private javax.swing.JLabel jLabel4;
-=======
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
->>>>>>> 5c892c0759e86fa72c5252fa2ea7474ccb1cfa44
     private javax.swing.JTextField jTF_NombreJugador;
     private javax.swing.JRadioButton medioButton;
     // End of variables declaration//GEN-END:variables
