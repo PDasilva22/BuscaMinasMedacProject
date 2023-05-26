@@ -6,6 +6,8 @@ package Vista;
 
 import Controlador.ConexionMySQL;
 import Controlador.ControladorJugadores;
+import Vista.InformacionGUI;
+import Vista.PuntuacionGUI;
 import Modelo.Jugador;
 import java.awt.Color;
 import java.sql.SQLException;
@@ -74,6 +76,9 @@ public class InicioGUI extends javax.swing.JFrame {
         dificilButton = new javax.swing.JRadioButton();
         jButton2 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(700, 500));
@@ -130,12 +135,30 @@ public class InicioGUI extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(70, 330, 40, 39);
+        jButton2.setBounds(70, 330, 50, 50);
 
         jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\usuario\\Documents\\NetBeansProjects\\BuscaMinasMedacProject\\src\\main\\java\\Vista\\fondo_inicio.jpg")); // NOI18N
         jLabel4.setText("jLabel4");
         getContentPane().add(jLabel4);
         jLabel4.setBounds(0, 0, 700, 540);
+
+        jMenu1.setText("Información");
+        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu1MouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Puntuación");
+        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu2MouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -170,6 +193,16 @@ public class InicioGUI extends javax.swing.JFrame {
         info.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+        InformacionGUI informacionGUI = new InformacionGUI();
+        informacionGUI.setVisible(true);
+    }//GEN-LAST:event_jMenu1MouseClicked
+
+    private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
+        PuntuacionGUI puntuacionGUI = new PuntuacionGUI();
+        puntuacionGUI.setVisible(true);
+    }//GEN-LAST:event_jMenu2MouseClicked
 
     private void crearTablero(int dificultad) {
         //pasamos el jugador a la nueva ventana
@@ -226,6 +259,9 @@ public class InicioGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JTextField jTF_NombreJugador;
     private javax.swing.JRadioButton medioButton;
     // End of variables declaration//GEN-END:variables

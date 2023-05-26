@@ -45,8 +45,6 @@ public class InformacionGUI extends javax.swing.JFrame {
         jTextArea2 = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTextArea2.setColumns(20);
@@ -57,8 +55,6 @@ public class InformacionGUI extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTextArea2);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 700, 450));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\MEDAC\\Documents\\NetBeansProjects\\BuscaMinasMedacProject\\src\\main\\java\\Vista\\fondoInformacion.jpg")); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
