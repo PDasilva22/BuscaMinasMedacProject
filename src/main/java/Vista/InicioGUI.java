@@ -113,7 +113,7 @@ public class InicioGUI extends javax.swing.JFrame {
         buttonGroup1.add(dificilButton);
         dificilButton.setText("Difícil");
         getContentPane().add(dificilButton);
-        dificilButton.setBounds(530, 300, 52, 21);
+        dificilButton.setBounds(530, 300, 54, 21);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

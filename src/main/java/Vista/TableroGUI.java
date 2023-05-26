@@ -249,17 +249,17 @@ public class TableroGUI extends javax.swing.JFrame {
     private void gameOver() {
 
         //guardamos la puntuacion del jugador
-        ConexionMySQL conexion = new ConexionMySQL("root", " ", "buscaminas");
+    /*    ConexionMySQL conexion = new ConexionMySQL("root", " ", "buscaminas");
         ControladorJugadores controlador = new ControladorJugadores(conexion);
         try {
             conexion.conectar();
-            controlador.insertarJugador(jActual);
+         //   controlador.insertarJugador(jActual);
         } catch (SQLException ex) {
             Logger.getLogger(TableroGUI.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(TableroGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+*/
         this.dispose();
         this.inicioGUI.setVisible(true);
 
